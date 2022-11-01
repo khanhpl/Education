@@ -1,0 +1,23 @@
+.width-150{
+    width: 150px;
+}
+.width-percentage-30{
+    width: 30%;
+}
+.width-percentage-45{
+    width: 45%;
+}
+.margin-auto{
+    margin: auto;
+}
+.content-layout{
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: white;
+    padding: 3rem;
+    border-radius: 1rem;
+}
+body{
+    background-color: #e9ecef;
+    font-family: "Tahoma", Times, serif;
+}

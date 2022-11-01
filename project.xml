@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<school schoolName="FPT">
+    <teacher teacherID="namh6">
+        <name>Mr. Nam12356</name>
+        <email>namh3@fpt.edu.vn</email>
+        <phone>342391</phone>
+        <avatar url="Avatar{url=Avatar{url=Avatar{url=https://pickaface.net/gallery/avatar/karl52d63034e0a8a.png}}}"/>
+        <class classID="se1234" TimeStart="12" TimeEnd="23">
+            <subject subjectID="dsfdf">
+                <subjectName>safdsafga</subjectName>
+            </subject>
+            <student studentID="">
+                <name></name>
+                <email></email>
+                <phone>0</phone>
+                <avatar url=""/>
+            </student>
+        </class>
+    </teacher>
+</school>
