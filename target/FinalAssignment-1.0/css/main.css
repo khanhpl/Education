@@ -21,3 +21,6 @@ body{
     background-color: #e9ecef;
     font-family: "Tahoma", Times, serif;
 }
+p{
+    color: red;
+}

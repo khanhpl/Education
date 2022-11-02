@@ -28,10 +28,10 @@ public class DeleteClass extends HttpServlet {
             throws ServletException, IOException {
         try {
             String classID = request.getParameter("malop");
-            SchoolRepo.deleteClass(classID);
-            System.out.println(SchoolRepo.read());
-            //SchoolRepo.save();
-            response.sendRedirect(request.getContextPath() + "/trangchu");
+            String teacherID = request.getParameter("magv");
+            String subjectID = request.getParameter("mamon");
+            SchoolRepo.deleteClass(teacherID, classID, subjectID);
+            response.sendRedirect(request.getContextPath() + "/danhsachlopcuagv?magv=" + teacherID);
         } catch (Exception e) {
             Logger.getLogger(IndexServlet.class.getName()).log(Level.SEVERE, null, e);
             System.out.println(e.getMessage());

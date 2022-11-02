@@ -5,11 +5,8 @@
  */
 package controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -18,34 +15,35 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import models.Classes;
-import models.School;
 import repository.SchoolRepo;
-import repository.MyUnmarshaller;
 
 /**
  *
  * @author nhn19
  */
-@WebServlet(name = "trangchu", urlPatterns = {"/trangchu"})
-public class IndexServlet extends HttpServlet {
+@WebServlet(name = "danhsachlopcuagv", urlPatterns = {"/danhsachlopcuagv"})
+public class DetailClassOfTeacher extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        SchoolRepo.read();
-
+        String teacherID = request.getParameter("magv");
         try {
-            request.setAttribute("teacher", SchoolRepo.schoolData.getTeacher());
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
+
+            request.setAttribute("danhsachlop", SchoolRepo.detailTeacher(teacherID).getListClasses());
+            request.setAttribute("magv", teacherID);
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/detailclassofteacher.jsp");
+            
             rd.forward(request, response);
         } catch (Exception e) {
             Logger.getLogger(IndexServlet.class.getName()).log(Level.SEVERE, null, e);
-            System.out.println(e.getMessage());
 
         }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
     }
 

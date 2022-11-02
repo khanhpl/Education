@@ -14,18 +14,11 @@ public class StudentValidate {
    private String name;
    private String email;
    private String phone;
-   private String avatar;
+
 
     public StudentValidate() {
     }
 
-    public StudentValidate(String studentID, String studentName, String email, String phone, String avatar) {
-        this.studentID = studentID;
-        this.name = studentName;
-        this.email = email;
-        this.phone = phone;
-        this.avatar = avatar;
-    }
 
     public StudentValidate(String studentID, String studentName, String email, String phone) {
         this.studentID = studentID;
@@ -64,6 +57,11 @@ public class StudentValidate {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    @Override
+    public String toString() {
+        return "StudentValidate{" + "studentID=" + studentID + ", name=" + name + ", email=" + email + ", phone=" + phone + '}';
     }
    
    

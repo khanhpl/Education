@@ -14,7 +14,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import models.Avatar;
 import models.Teacher;
 import repository.SchoolRepo;
 
@@ -33,13 +32,8 @@ public class DetailTeacher extends HttpServlet {
         try {
             Teacher detailTeacher = SchoolRepo.detailTeacher(teacherID);
             System.out.println(detailTeacher);
-            Avatar a = new Avatar("123");
-            Teacher test = new Teacher("sfda", "nhjkajk", "dfask@gmail.com", 0213123, a);
-
             request.setAttribute("thongtingiaovien", detailTeacher);
-            System.out.println("12312312");
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/detailteacher.jsp");
-            System.out.println("fasdbfkjhasjfk");
             rd.forward(request, response);
         } catch (Exception e) {
             Logger.getLogger(IndexServlet.class.getName()).log(Level.SEVERE, null, e);

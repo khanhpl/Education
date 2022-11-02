@@ -7,12 +7,11 @@ controller\DeleteStudent.class
 models\Teacher.class
 repository\MyMarshaller.class
 controller\AccountLogout.class
-models\Avatar.class
 models\School.class
 models\Subject.class
-controller\Test.class
 models\ClassesValidate.class
 controller\DetailTeacher.class
+controller\DetailClassOfTeacher.class
 repository\AccountRepo.class
 controller\UpdateClass.class
 models\StudentValidate.class

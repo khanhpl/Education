@@ -13,9 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-<!--          <div>
-              Mã giáo viên: <c:out value="${requestScope.thongtingiaovien.teacherID}"/>
-          </div>-->
+
         <div>
             Tên giáo viên: <c:out value="${requestScope.thongtingiaovien.name}"/>
         </div>

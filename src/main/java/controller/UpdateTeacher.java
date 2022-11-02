@@ -14,7 +14,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import models.Avatar;
 import models.Classes;
 import models.Subject;
 import models.Teacher;
@@ -48,11 +47,9 @@ public class UpdateTeacher extends HttpServlet {
             String name = request.getParameter("tengv");
             String mail = request.getParameter("mail");
             int phone = Integer.parseInt(request.getParameter("sdt"));
-            String avatar = request.getParameter("hinhdaidien");
-            
-            Avatar ava = new Avatar(avatar);
-            Teacher teacher = new Teacher(teacherID, name, mail, phone, ava);
-            SchoolRepo.updateTeacher(teacher);
+
+          //  Teacher teacher = new Teacher(teacherID, name, mail, phone);
+           // SchoolRepo.updateTeacher(teacher);
 
             response.sendRedirect(request.getContextPath() + "/trangchu");
         } catch (Exception e) {

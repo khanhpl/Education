@@ -43,10 +43,10 @@ public class AccountLogin extends HttpServlet {
             boolean vail = AccountRepo.checkLogin(_u, _p);
             if (vail) {
                 SchoolRepo.read();
-                Teacher teacher = SchoolRepo.schoolData.getTeacher();
+                //Teacher teacher = SchoolRepo.schoolData.getTeacher();
                 HttpSession session = request.getSession();
                 session.setAttribute("tendangnhap", _u);
-                session.setAttribute("giaovien", teacher);
+               // session.setAttribute("giaovien", teacher);
                 response.sendRedirect(request.getContextPath() + "/trangchu");
             }
         } catch (Exception e) {

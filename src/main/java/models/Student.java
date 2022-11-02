@@ -23,22 +23,14 @@ public class Student {
     private String studentID;
     private String name;
     private String email;
-    private int phone;
+    private String phone;
     
-    private Avatar avatar;
+
 
     public Student() {
     }
 
-    public Student(String studentID, String name, String email, int phone, Avatar avatar) {
-        this.studentID = studentID;
-        this.name = name;
-        this.email = email;
-        this.phone = phone;
-        this.avatar = avatar;
-    }
-
-    public Student(String studentID, String name, String email, int phone) {
+    public Student(String studentID, String name, String email, String phone) {
         this.studentID = studentID;
         this.name = name;
         this.email = email;
@@ -69,27 +61,19 @@ public class Student {
         this.email = email;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public Avatar getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(Avatar avatar) {
-        this.avatar = avatar;
     }
 
     @Override
     public String toString() {
-        return "Student{" + "studentID=" + studentID + ", name=" + name + ", email=" + email + ", phone=" + phone + ", avatar=" + avatar + '}';
+        return "Student{" + "studentID=" + studentID + ", name=" + name + ", email=" + email + ", phone=" + phone + '}';
     }
 
-   
+
     
 }

@@ -26,10 +26,10 @@ public class DeleteStudent extends HttpServlet {
             throws ServletException, IOException {
         String classID = request.getParameter("malop");
         String studentID = request.getParameter("masinhvien");
+        String teacherID = request.getParameter("magv");
+        SchoolRepo.deleteStudent(teacherID, classID, studentID);
 
-        SchoolRepo.deleteStudent(classID, studentID);
-
-        response.sendRedirect(request.getContextPath() + "/chitietlop?malop=" + classID);
+        response.sendRedirect(request.getContextPath() + "/chitietlop?malop=" + classID + "&magv=" + teacherID);
     }
 
 }

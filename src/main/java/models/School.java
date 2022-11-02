@@ -4,6 +4,7 @@
  */
 package models;
 
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -20,21 +21,29 @@ public class School {
     @XmlAttribute
     private String schoolName;
 
-    private Teacher teacher;
+    private List<Teacher> teacher;
 
     public School() {
         schoolName = "FPT";
     }
 
-    public School(Teacher teacher) {
+    public School(List<Teacher> teacher) {
         this.teacher = teacher;
     }
 
-    public Teacher getTeacher() {
+    public String getSchoolName() {
+        return schoolName;
+    }
+
+    public void setSchoolName(String schoolName) {
+        this.schoolName = schoolName;
+    }
+
+    public List<Teacher> getTeacher() {
         return teacher;
     }
 
-    public void setTeacher(Teacher teacher) {
+    public void setTeacher(List<Teacher> teacher) {
         this.teacher = teacher;
     }
 
@@ -42,5 +51,6 @@ public class School {
     public String toString() {
         return "School{" + "schoolName=" + schoolName + ", teacher=" + teacher + '}';
     }
+
 
 }

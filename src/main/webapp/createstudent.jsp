@@ -15,26 +15,26 @@
     </head>
     <body>
         <form action="" method="POST">
-            <div style="display: flex" class="input-group mb-3">
+            <div class="input-group mb-3">
                 <span class="input-group-text width-150">Mã sinh viên</span>
-                <input type="text" class="form-control" id="txtName" name="masinhvien" value="${sinhviencu.studentID}">
+                <input type="text" class="form-control" id="txtName" name="masinhvien" value="${sinhviencu.studentID}">               
             </div>
-            <div style="display: flex" class="input-group mb-3">
+            <p>${requestScope.kiemtrasinhvien.studentID}</p>
+            <div class="input-group mb-3">
                 <span class="input-group-text width-150">Tên sinh viên</span>
-                <input type="text" class="form-control" id="txtName" name="tensinhvien" value="${sinhviencu.name}">
+                <input type="text" class="form-control" id="txtName" name="tensinhvien" value="${sinhviencu.name}">               
             </div>
-            <div style="display: flex" class="input-group mb-3">
+            <p>${requestScope.kiemtrasinhvien.name}</p>
+            <div class="input-group mb-3">
                 <span class="input-group-text width-150">Email</span>
-                <input type="text" class="form-control" id="txtName" name="email" value="${sinhviencu.email}">
+                <input type="text" class="form-control" id="txtName" name="email" value="${sinhviencu.email}">                                
             </div>
-            <div style="display: flex" class="input-group mb-3">
+            <p>${requestScope.kiemtrasinhvien.email}</p>
+            <div class="input-group mb-3">
                 <span class="input-group-text width-150">Điện thoại</span>
-                <input type="text" class="form-control" id="txtName" name="dienthoai" value="${sinhviencu.phone}">
+                <input type="text" class="form-control" id="txtName" name="dienthoai" value="${sinhviencu.phone}">                             
             </div>
-            <div style="display: flex" class="input-group mb-3">
-                <span class="input-group-text width-150">Ảnh</span>
-                <input type="text" class="form-control" id="txtName" name="anh">
-            </div>
+            <p>${requestScope.kiemtrasinhvien.phone}</p>
             <div class="input-group mb-3">
                 <button type="submit" class="btn btn-primary margin-auto">Tạo mới</button>
             </div>

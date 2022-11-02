@@ -28,27 +28,19 @@ public class DetailClasses extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String classID = request.getParameter("malop");
-
+        String teacherID = request.getParameter("magv");
         try {
-          
-            request.setAttribute("thongtinlop", SchoolRepo.detailClass(classID));
-      
+            request.setAttribute("thongtinlop", SchoolRepo.detailClass(teacherID, classID));
+            request.setAttribute("magv", teacherID);
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/detailclass.jsp");
             rd.forward(request, response);
         } catch (Exception e) {
-           Logger.getLogger(IndexServlet.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(IndexServlet.class.getName()).log(Level.SEVERE, null, e);
 
         }
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

@@ -4,7 +4,6 @@
         <name>Mr. Nam12356</name>
         <email>namh3@fpt.edu.vn</email>
         <phone>342391</phone>
-        <avatar url="Avatar{url=Avatar{url=Avatar{url=https://pickaface.net/gallery/avatar/karl52d63034e0a8a.png}}}"/>
         <class classID="se1234" TimeStart="12" TimeEnd="23">
             <subject subjectID="dsfdf">
                 <subjectName>safdsafga</subjectName>
@@ -12,8 +11,52 @@
             <student studentID="">
                 <name></name>
                 <email></email>
-                <phone>0</phone>
-                <avatar url=""/>
+                <phone></phone>
+            </student>
+        </class>
+        <class classID="se1234" TimeStart="12" TimeEnd="3">
+            <subject subjectID="aaaaaa">
+                <subjectName>safdsafga</subjectName>
+            </subject>
+            <student studentID="">
+                <name></name>
+                <email></email>
+                <phone></phone>
+            </student>
+        </class>
+    </teacher>
+    <teacher teacherID="hung7">
+        <name>Mr. HUNG 12356</name>
+        <email>hung3@fpt.edu.vn</email>
+        <phone>012342113</phone>
+        <class classID="se1111" TimeStart="12" TimeEnd="23">
+            <subject subjectID="aaaaaq">
+                <subjectName>safdsafga</subjectName>
+            </subject>
+            <student studentID="se1231232">
+                <name>aefvafdsa</name>
+                <email>qwedwq@gmail.com</email>
+                <phone>0231232975</phone>
+            </student>
+        </class>
+        <class classID="se1235" TimeStart="2" TimeEnd="23">
+            <subject subjectID="bbbbbb">
+                <subjectName>bbbbbbbb</subjectName>
+            </subject>
+            <student studentID="">
+                <name></name>
+                <email></email>
+                <phone></phone>
+            </student>
+        </class>
+        <class classID="se1231" TimeStart="12" TimeEnd="23">
+            <subject subjectID="ccccc">
+                <subjectName>ccccccc</subjectName>
+            </subject>
+            <student studentID="">
+                <name></name>
+                <email></email>
+                <phone></phone>
             </student>
         </class>
     </teacher>

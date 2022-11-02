@@ -24,11 +24,10 @@ public class MyUnmarshaller {
         School school = new School();
         school = getDataFromXml();
         System.out.println(school);
-        System.out.println(school.getTeacher().getListClasses());
     }
 
     public static School getDataFromXml() {
-        File xmlFile = new File("D:\\XML\\FinalAssignment\\project.xml");
+        File xmlFile = new File("D:\\XML\\Education\\project.xml");
 
         
         School school = null;
@@ -37,9 +36,7 @@ public class MyUnmarshaller {
             JAXBContext jc = JAXBContext.newInstance(School.class);
             Unmarshaller un = jc.createUnmarshaller();
             school = (School) un.unmarshal(xmlFile);
-
-            
-            
+                     
         } catch (Exception je) {
             System.out.println(je.getMessage());
         }

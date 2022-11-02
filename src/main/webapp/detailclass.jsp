@@ -35,38 +35,35 @@
             </div>
             <table border="1"  class="table table-striped">
                 <thead>
-                <th>Ảnh</th>
                 <th>Mã sinh viên</th>
                 <th>Tên sinh viên</th>
                 <th>Email</th>
                 <th>Điện thoại</th>
                 <th>Thao tác</th>
-            </thead>
-            <tbody>
-                <c:forEach var="row" items="${requestScope.thongtinlop.students}">
-                    <c:if test="${!empty row.studentID}">
-                        <tr>
-    <!--                    <td><image src="${row.avatar.url}"/></td>-->
-                            <td>123</td>
-                            <td><c:out value="${row.studentID}"/></td>
-                            <td><c:out value="${row.name}"/></td>
-                            <td><c:out value="${row.email}"/></td>
-                            <td><c:out value="${row.phone}"/></td>                    
-                            <td>
-                                <div class="margin-auto">
-                                    <a href="suathongtin?masinhvien=${row.studentID}&malop=${requestScope.thongtinlop.classID}" class="btn btn-warning width-percentage-45">Sửa</a>
-                                    <a href="xoasinhvien?masinhvien=${row.studentID}&malop=${requestScope.thongtinlop.classID}" class="btn btn-danger width-percentage-45">Xóa</a>
-                                </div>
-                            </td>
-                        </tr>
-                    </c:if>
-                </c:forEach>
-            </tbody>
-        </table>
-        <div class="d-flex justify-content-end">
-            <a class="btn btn-success mb-1" href="themsinhvien?malop=${requestScope.thongtinlop.classID}">Thêm sinh viên</a>
-        </div> 
-        <a href="trangchu" class="btn btn-link d-flex justify-content-end">Trang Chủ</a>
-    </div>
-</body>
+                </thead>
+                <tbody>
+                    <c:forEach var="row" items="${requestScope.thongtinlop.students}">
+                        <c:if test="${!empty row.studentID}">
+                            <tr>
+                                <td><c:out value="${row.studentID}"/></td>
+                                <td><c:out value="${row.name}"/></td>
+                                <td><c:out value="${row.email}"/></td>
+                                <td><c:out value="${row.phone}"/></td>                    
+                                <td>
+                                    <div class="margin-auto">
+                                        <a href="suathongtin?masinhvien=${row.studentID}&malop=${requestScope.thongtinlop.classID}&magv=${requestScope.magv}" class="btn btn-warning width-percentage-45">Sửa thông tin sinh viên</a>
+                                        <a href="xoasinhvien?masinhvien=${row.studentID}&malop=${requestScope.thongtinlop.classID}&magv=${requestScope.magv}" class="btn btn-danger width-percentage-45">Xóa</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </c:if>
+                    </c:forEach>
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-end">
+                <a class="btn btn-success mb-1" href="themsinhvien?malop=${requestScope.thongtinlop.classID}&magv=${requestScope.magv}&mamon=${requestScope.thongtinlop.subject.subjectID}"">Thêm sinh viên</a>
+            </div> 
+            <a href="trangchu" class="btn btn-link d-flex justify-content-end">Trang Chủ</a>
+        </div>
+    </body>
 </html>

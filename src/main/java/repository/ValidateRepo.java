@@ -12,6 +12,7 @@ import models.ClassesValidate;
 import models.Student;
 import models.StudentValidate;
 import models.Subject;
+import models.Teacher;
 
 /**
  *
@@ -19,7 +20,7 @@ import models.Subject;
  */
 public class ValidateRepo {
 
-    public static boolean checkInputClasses(Classes classInput) {
+    public static boolean checkInputClasses(String subjectID, Classes classInput) {
         //ma lop
         boolean check = true;
         if (classInput.getClassID().isEmpty() || classInput.getClassID().trim() == "") {
@@ -28,7 +29,7 @@ public class ValidateRepo {
         if (!classInput.getClassID().matches("[a-zA-Z]{2}[0-9]{4}")) {
             check = false;
         }
-        if (!checkClassID(classInput.getClassID())) {
+        if (!checkClassID(classInput.getClassID(), subjectID)) {
             check = false;
         }
 
@@ -63,7 +64,7 @@ public class ValidateRepo {
         return check;
     }
 
-    public static ClassesValidate nofiInputClasses(Classes classInput) {
+    public static ClassesValidate nofiInputClasses(Classes classInput, String subjectIDOfClas) {
         String classID = "";
         String timeStart = "";
         String timeEnd = "";
@@ -76,10 +77,6 @@ public class ValidateRepo {
         } else {
             if (!classInput.getClassID().matches("[a-zA-Z]{2}[0-9]{4}")) {
                 classID = "Nhập theo format xxNNNN với x là chữ và N là số";
-            } else {
-                if (!checkInputClasses(classInput)) {
-                    classID = "Mã lớp này đã tồn tại";
-                }
             }
         }
 
@@ -107,11 +104,17 @@ public class ValidateRepo {
         } else {
             if (!classInput.getSubject().getSubjectID().matches("[a-zA-Z]{2,4}[a-zA-Z0-9]{0,4}")) {
                 subjectID = "Mã môn không hợp lệ";
+            } else {
+                if (!checkClassID(classInput.getClassID(), subjectIDOfClas)) {
+                    subjectID = "Môn học này đã có giáo viên khác dạy";
+                }
             }
+
         }
 
         //ten mon
-        if (classInput.getSubject().getSubjectName().isEmpty() || classInput.getSubject().getSubjectName().trim() == "") {
+        if (classInput.getSubject()
+                .getSubjectName().isEmpty() || classInput.getSubject().getSubjectName().trim() == "") {
             subjectName = "Vui lòng nhập tên môn học";
         }
 
@@ -119,7 +122,7 @@ public class ValidateRepo {
         return nofi;
     }
 
-    public static boolean checkInputStudent(String classID, StudentValidate student) {
+    public static boolean checkInputStudent(String subjectID, StudentValidate student) {
         boolean check = true;
         //ma sinh vien
         if (student.getStudentID().isEmpty() || student.getStudentID().trim() == "") {
@@ -128,7 +131,7 @@ public class ValidateRepo {
         if (!student.getStudentID().matches("[a-zA-Z]{2}[0-9]{6,7}")) {
             check = false;
         }
-        if (!checkStudentID(classID, student.getStudentID())) {
+        if (!checkStudentID(subjectID, student.getStudentID())) {
             check = false;
         }
 
@@ -156,7 +159,7 @@ public class ValidateRepo {
         return check;
     }
 
-    public static StudentValidate nofiInputStudent(String classID, StudentValidate student) {
+    public static StudentValidate nofiInputStudent(String subjectID, StudentValidate student) {
         String studentID = "";
         String studentName = "";
         String email = "";
@@ -167,8 +170,8 @@ public class ValidateRepo {
             if (!student.getStudentID().matches("[a-zA-Z]{2}[0-9]{6,7}")) {
                 studentID = "Nhập theo dạng wwDDDDDD với w là chữ cái và D là số từ 6 hoặc 7 số ";
             } else {
-                if (!checkStudentID(classID, student.getStudentID())) {
-                    studentID = "Mã sinh viên này đã tồn tại";
+                if (!checkStudentID(subjectID, student.getStudentID())) {
+                    studentID = "Bạn đã đăng ký môn học này rồi";
                 }
             }
         }
@@ -200,43 +203,42 @@ public class ValidateRepo {
         return studentVali;
     }
 
-    public static void main(String[] args) {
-        String classID = "sda";
-        String timeStart = "dsa";
-        String timeEnd = "2";
-        String subjectID = "ssds123";
-        String subjectName = "fdsâss";
-        Subject s = new Subject(subjectID, subjectName);
-        Classes in = new Classes(classID, timeStart, timeEnd, s);
-
-        System.out.println(nofiInputClasses(in));
-    }
-
-    public static boolean checkClassID(String classID) {
+    public static boolean checkClassID(String classID, String subjectID) {
         boolean check = true;
-        List<Classes> listClass = SchoolRepo.schoolData.getTeacher().getListClasses();
-        for (int i = 0; i < listClass.size(); i++) {
-            if (listClass.get(i).getClassID().equalsIgnoreCase(classID)) {
-                check = false;
+        List<Teacher> listTeacher = SchoolRepo.schoolData.getTeacher();
+        for (int i = 0; i < listTeacher.size(); i++) {
+            List<Classes> listClasseses = listTeacher.get(i).getListClasses();
+            for (int j = 0; j < listClasseses.size(); j++) {
+                if (listClasseses.get(j).getClassID().equalsIgnoreCase(classID) && listClasseses.get(j).getSubject().getSubjectID().equalsIgnoreCase(subjectID)) {
+                    check = false;
+                }
             }
         }
         return check;
     }
 
-    public static boolean checkStudentID(String classID, String studentID) {
+    public static boolean checkStudentID(String subjectID, String studentID) {
         boolean check = true;
-        List<Classes> listClass = SchoolRepo.schoolData.getTeacher().getListClasses();
-        for (int i = 0; i < listClass.size(); i++) {
-            if (listClass.get(i).getClassID().equalsIgnoreCase(classID)) {
-                List<Student> listStudent = listClass.get(i).getStudents();
-                for (int j = 0; j < listStudent.size(); j++) {
-                    if (listStudent.get(j).getStudentID().equalsIgnoreCase(studentID)) {
+        List<Teacher> listTeachers = SchoolRepo.schoolData.getTeacher();
+        for (int i = 0; i < listTeachers.size(); i++) {
+            List<Classes> listClasseses = listTeachers.get(i).getListClasses();
+            for (int j = 0; j < listClasseses.size(); j++) {
+                List<Student> listStudents = listClasseses.get(j).getStudents();
+                for (int z = 0; z < listStudents.size(); z++) {
+                    if (listStudents.get(z).getStudentID().equalsIgnoreCase(studentID) && listClasseses.get(j).getSubject().getSubjectID().equalsIgnoreCase(subjectID)) {
                         check = false;
                     }
                 }
             }
         }
         return check;
+    }
+
+    public static void main(String[] args) {
+        SchoolRepo.read();
+        StudentValidate st = new StudentValidate("se123456", "123", "123", "123");
+        System.out.println(nofiInputStudent("aaaa", st));
+
     }
 
 }

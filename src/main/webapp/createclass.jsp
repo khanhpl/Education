@@ -15,33 +15,38 @@
     </head>
     <body>
         <div class="content-layout">
-        <h1 class="d-flex justify-content-center">Tạo lớp mới</h1>
-         <form action="" method="POST">
-            <div style="display: flex"  class="input-group mb-3">
-                <span class="input-group-text width-150">Mã lớp</span>
-                <input type="text" class="form-control" id="txtName" name="malop" value="${requestScope.lopnhapcu.classID}">
-            </div>
-            <div style="display: flex"  class="input-group mb-3">
-                <span class="input-group-text width-150">Thời gian bắt đầu</span>
-                <input type="text" class="form-control" id="txtName" name="batdau" value="${requestScope.lopnhapcu.timeStart}">
-            </div>
-            <div style="display: flex"  class="input-group mb-3">
-                <span class="input-group-text width-150">Thời gian kết thúc</span>
-                <input type="text" class="form-control" id="txtName" name="ketthuc" value="${requestScope.lopnhapcu.timeEnd}">
-            </div>
-            <div style="display: flex"  class="input-group mb-3">
-                <span class="input-group-text width-150">Mã môn học</span>
-                <input type="text" class="form-control" id="txtName" name="mamon" value="${requestScope.lopnhapcu.subject.subjectID}">
-            </div>
-            <div style="display: flex"  class="input-group mb-3">
-                <span class="input-group-text width-150">Tên môn học</span>
-                <input type="text" class="form-control" id="txtName" name="tenmon" value="${requestScope.lopnhapcu.subject.subjectName}">
-            </div>
-            <div class="input-group mb-3">
-                <button type="submit" class="btn btn-primary margin-auto">Tạo mới</button>
-            </div>
-        </form>
-        <a href="trangchu" class="btn btn-link">Trang Chủ</a>
-</div>
+            <h1 class="d-flex justify-content-center">Tạo lớp mới</h1>
+            <form action="" method="POST">
+                <div   class="input-group mb-3">
+                    <span class="input-group-text width-150">Mã lớp</span>
+                    <input type="text" class="form-control" id="txtName" name="malop" value="${requestScope.lopnhapcu.classID}">
+                </div>
+                <p>${requestScope.kiemtralop.classID}</p>
+                <div class="input-group mb-3">
+                    <span class="input-group-text width-150">Thời gian bắt đầu</span>
+                    <input type="text" class="form-control" id="txtName" name="batdau" value="${requestScope.lopnhapcu.timeStart}">                   
+                </div>
+                <p>${requestScope.kiemtralop.timeStart}</p>
+                <div  class="input-group mb-3">
+                    <span class="input-group-text width-150">Thời gian kết thúc</span>
+                    <input type="text" class="form-control" id="txtName" name="ketthuc" value="${requestScope.lopnhapcu.timeEnd}">
+                </div>
+                <p>${requestScope.kiemtralop.timeEnd}</p>
+                <div class="input-group mb-3">
+                    <span class="input-group-text width-150">Mã môn học</span>
+                    <input type="text" class="form-control" id="txtName" name="mamon" value="${requestScope.lopnhapcu.subject.subjectID}">
+                </div>
+                <p>${requestScope.kiemtralop.subjectID}</p>
+                <div class="input-group mb-3">
+                    <span class="input-group-text width-150">Tên môn học</span>
+                    <input type="text" class="form-control" id="txtName" name="tenmon" value="${requestScope.lopnhapcu.subject.subjectName}">
+                </div>
+                <p>${requestScope.kiemtralop.subjectName}</p>
+                <div class="input-group mb-3">
+                    <button type="submit" class="btn btn-primary margin-auto">Tạo mới</button>
+                </div>
+            </form>
+            <a href="trangchu" class="btn btn-link">Trang Chủ</a>
+        </div>
     </body>
 </html>

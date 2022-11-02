@@ -23,8 +23,7 @@ public class Teacher {
    
     private String name;
     private String email;
-    private int phone;
-    private Avatar avatar;
+    private String phone;
     
     @XmlElement(name = "class")
     private List<Classes> listClasses;
@@ -32,21 +31,19 @@ public class Teacher {
     public Teacher() {
     }
 
-    public Teacher(String teacherID, String name, String email, int phone, Avatar avatar, List<Classes> listClasses) {
+    public Teacher(String teacherID, String name, String email, String phone) {
         this.teacherID = teacherID;
         this.name = name;
         this.email = email;
         this.phone = phone;
-        this.avatar = avatar;
-        this.listClasses = listClasses;
     }
 
-    public Teacher(String teacherID, String name, String email, int phone, Avatar avatar) {
+    public Teacher(String teacherID, String name, String email, String phone, List<Classes> listClasses) {
         this.teacherID = teacherID;
         this.name = name;
         this.email = email;
         this.phone = phone;
-        this.avatar = avatar;
+        this.listClasses = listClasses;
     }
 
     public String getTeacherID() {
@@ -73,20 +70,12 @@ public class Teacher {
         this.email = email;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public Avatar getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(Avatar avatar) {
-        this.avatar = avatar;
     }
 
     public List<Classes> getListClasses() {
@@ -99,11 +88,8 @@ public class Teacher {
 
     @Override
     public String toString() {
-        return "Teacher{" + "teacherID=" + teacherID + ", name=" + name + ", email=" + email + ", phone=" + phone + ", avatar=" + avatar + ", listClasses=" + listClasses + '}';
+        return "Teacher{" + "teacherID=" + teacherID + ", name=" + name + ", email=" + email + ", phone=" + phone + ", listClasses=" + listClasses + '}';
     }
 
    
-
-   
-        
 }

@@ -32,8 +32,8 @@ public class UpdateStudent extends HttpServlet {
             throws ServletException, IOException {
         String classID = request.getParameter("malop");
         String studentID = request.getParameter("masinhvien");
-
-        request.setAttribute("thongtinsua", SchoolRepo.detailStudent(classID, studentID));
+        String teacherID = request.getParameter("magv");
+        request.setAttribute("thongtinsua", SchoolRepo.detailStudent(teacherID, classID, studentID));
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/updatestudent.jsp?malop=" + classID + "&masinhvien=" + studentID);
         rd.forward(request, response);
     }
@@ -47,18 +47,18 @@ public class UpdateStudent extends HttpServlet {
             String studentName = request.getParameter("tensinhvien");
             String email = request.getParameter("email");
             String phone = request.getParameter("dienthoai");
-
+            String teacherID = request.getParameter("magv");
             StudentValidate studentCheck = new StudentValidate(studentID, studentName, email, phone);
 
-            if (!ValidateRepo.checkInputStudent(classID, studentCheck)){
-                request.setAttribute("kiemtrasinhvien", ValidateRepo.nofiInputStudent(classID, studentCheck));
+            if (!ValidateRepo.checkInputStudent(classID, studentCheck)) {
+                request.setAttribute("kiemtrasinhvien", ValidateRepo.nofiInputStudent("", studentCheck));
                 request.setAttribute("thongtinsua", studentCheck);
-                RequestDispatcher rd = getServletContext().getRequestDispatcher("/updatestudent.jsp?malop=" + classID);
+                RequestDispatcher rd = getServletContext().getRequestDispatcher("/updatestudent.jsp?malop=" + classID + "&magv=" + teacherID);
                 rd.forward(request, response);
             } else {
-                int phone2 = Integer.parseInt(phone);
-                Student student = new Student(studentID, studentName, email, phone2);
-                SchoolRepo.updateStudent(classID, student);
+
+                Student student = new Student(studentID, studentName, email, phone);
+                SchoolRepo.updateStudent(studentID, student);
                 response.sendRedirect(request.getContextPath() + "/chitietlop?malop=" + classID);
             }
         } catch (Exception e) {
