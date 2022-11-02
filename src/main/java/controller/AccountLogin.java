@@ -15,9 +15,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import models.Account;
 import models.Teacher;
 import repository.AccountRepo;
 import repository.SchoolRepo;
+import utils.AppUtils;
 
 /**
  *
@@ -43,6 +45,9 @@ public class AccountLogin extends HttpServlet {
             boolean vail = AccountRepo.checkLogin(_u, _p);
             if (vail) {
                 SchoolRepo.read();
+                
+                AppUtils.storeLoginedUser(request.getSession(), AccountRepo.details(_u));
+                
                 //Teacher teacher = SchoolRepo.schoolData.getTeacher();
                 HttpSession session = request.getSession();
                 session.setAttribute("tendangnhap", _u);
