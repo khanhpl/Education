@@ -14,6 +14,8 @@
         <link href="css/main.css" rel="stylesheet">
     </head>
     <body>
+        <jsp:include page="header.jsp"/>
+        <div class="content-layout">
         <form action="" method="POST">
             <div class="input-group mb-3">
                 <span class="input-group-text width-150">Mã sinh viên</span>
@@ -40,6 +42,7 @@
             </div>
         </form>
         <a href="trangchu" class="btn btn-link d-flex justify-content-end">Trang Chủ</a>
-
+        </div>
+        <jsp:include page="footer.jsp"/>
     </body>
 </html>

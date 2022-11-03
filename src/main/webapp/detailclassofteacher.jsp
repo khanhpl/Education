@@ -13,6 +13,7 @@
     </head>
 
     <body>
+        <jsp:include page="header.jsp"/>
         <div class="content-layout">
             <jsp:include page="teacherinfo.jsp"></jsp:include>
                 <h1 class="d-flex justify-content-center">Danh sách lớp học</h1>
@@ -66,6 +67,7 @@
             <div class="d-flex justify-content-end">
                 <a href="taolop?&magv=${requestScope.magv}" class="btn btn-primary">Tạo mới</a>
             </div>
+        <jsp:include page="footer.jsp"/>
     </body>
 
 </html>

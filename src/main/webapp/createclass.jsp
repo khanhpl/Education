@@ -14,6 +14,7 @@
         <link href="css/main.css" rel="stylesheet">
     </head>
     <body>
+        <jsp:include page="header.jsp"/>
         <div class="content-layout">
             <h1 class="d-flex justify-content-center">Tạo lớp mới</h1>
             <form action="" method="POST">
@@ -48,5 +49,6 @@
             </form>
             <a href="trangchu" class="btn btn-link">Trang Chủ</a>
         </div>
+        <jsp:include page="footer.jsp"/>
     </body>
 </html>
