@@ -25,7 +25,7 @@
                 <tr>                         
                     <td>
                         <a href="xemttgv?magv=${sessionScope.giaovien.teacherID}">Chi tiết</a>                            
-                        <a href="dangxuat">Dang Xuat</a>
+                        <a href="dangxuat">Đăng xuất</a>
                     </td>
                 </tr>
             </c:if>

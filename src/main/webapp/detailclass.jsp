@@ -15,6 +15,7 @@
         <link href="css/main.css" rel="stylesheet">
     </head>
     <body>
+        <jsp:include page="header.jsp"/>
         <div class="content-layout">
             <h1 class="d-flex justify-content-center">Thông tin lớp</h1>
             <div class="input-group mb-3">
@@ -65,5 +66,6 @@
             </div> 
             <a href="trangchu" class="btn btn-link d-flex justify-content-end">Trang Chủ</a>
         </div>
+        <jsp:include page="footer.jsp"/>
     </body>
 </html>

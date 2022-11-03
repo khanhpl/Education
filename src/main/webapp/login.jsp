@@ -9,19 +9,28 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Đăng nhập</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/main.css" rel="stylesheet">
     </head>
     <body>
+        <jsp:include page="header.jsp"/>
+        <div class="content-layout width-percentage-45 margin-auto">
+        <h1 class="d-flex justify-content-center">Đăng nhập</h1>
         <form action="dangnhap" method="POST" >
-            <div>
-                Tai Khoan: <input type="text" id="txtName" name="username"/>
+            <div class="input-group mb-3">
+                <span class="input-group-text width-100">Tài khoản</span>
+                <input type="text" class="form-control" id="txtName" name="username"/>
             </div>
-            <div>
-                Mat Khau: <input type="password" id="txtName" name="password"/>
+            <div class="input-group mb-3">
+                <span class="input-group-text width-100">Mật khẩu</span>
+                <input type="password" class="form-control" id="txtName" name="password"/>
             </div>
-            <div>
-                <button type="submit"> Dang Nhap </button>
+            <div class="d-flex">
+                <button type="submit" class="btn btn-primary margin-auto"> Đăng nhập </button>
             </div>
         </form>
+    </div>
+        <jsp:include page="footer.jsp"/>
     </body>
 </html>

@@ -11,9 +11,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Trang chủ</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/main.css" rel="stylesheet">
     </head>
     <body>
-    
+        <jsp:include page="header.jsp"/>
+        <div class="content-layout">
             <table border="1"  class="table table-striped">
                 <thead>
                 <th>Tên giáo viên</th>
@@ -42,5 +45,6 @@
            
             <a href="trangchu" class="btn btn-link d-flex justify-content-end">Trang Chủ</a>
         </div>
+        <jsp:include page="footer.jsp"/>
     </body>
 </html>
