@@ -5,6 +5,7 @@
 package repository;
 
 import java.util.ArrayList;
+import java.util.List;
 import models.Account;
 
 /**
@@ -15,7 +16,19 @@ public class AccountRepo {
     private static final ArrayList<Account> TEACHERS = new ArrayList<>();
     
     public static void initDataAccount(){
-        TEACHERS.add(new Account("duy", "123456"));
+        List<String> admin = new ArrayList<>();
+        admin.add("ADMIN");
+        List<String> supermod = new ArrayList<>();
+        supermod.add("SUPERMOD");
+        List<String> mod = new ArrayList<>();
+        mod.add("MOD");
+        List<String> editor = new ArrayList<>();
+        editor.add("EDITOR");
+        TEACHERS.add(new Account("duy", "123456", admin));
+        TEACHERS.add(new Account("admin", "123456", admin));
+        TEACHERS.add(new Account("supermod", "123456", supermod));
+        TEACHERS.add(new Account("mod", "123456", mod));
+        TEACHERS.add(new Account("editor", "123456", editor));
     }
     
     public static ArrayList<Account> read (){
