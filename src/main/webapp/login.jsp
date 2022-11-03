@@ -30,7 +30,12 @@
                 <button type="submit" class="btn btn-primary margin-auto"> Đăng nhập </button>
             </div>
         </form>
+
     </div>
+
+        <a href="trangchu">Bỏ qua</a>
+        
         <jsp:include page="footer.jsp"/>
+
     </body>
 </html>

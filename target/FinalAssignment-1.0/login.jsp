@@ -23,5 +23,6 @@
                 <button type="submit"> Dang Nhap </button>
             </div>
         </form>
+        <a href="trangchu">Bỏ qua</a>
     </body>
 </html>
