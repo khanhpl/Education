@@ -46,7 +46,9 @@
                     <button type="submit" class="btn btn-primary margin-auto">Tạo mới</button>
                 </div>
             </form>
+                <a href="danhsachlopcuagv?magv=${requestScope.magv}">Quay lại</a>
             <a href="trangchu" class="btn btn-link">Trang Chủ</a>
+            
         </div>
     </body>
 </html>

@@ -32,8 +32,7 @@ public class SecurityConfig {
 
 		List<String> urlPatterns1 = new ArrayList<String>();
 
-		urlPatterns1.add("/taolop");
-                urlPatterns1.add("/themsinhvien");
+                urlPatterns1.add("/themgv");
 
 		mapConfig.put(ROLE_EDITOR, urlPatterns1);
 
@@ -41,6 +40,7 @@ public class SecurityConfig {
 
 		urlPatterns2.add("/taolop");
                 urlPatterns2.add("/themsinhvien");
+                urlPatterns2.add("/themgv");
                 urlPatterns2.add("/sualop");
                 urlPatterns2.add("/suathongtin");
                 urlPatterns2.add("/suagv");
@@ -51,11 +51,13 @@ public class SecurityConfig {
 
 		urlPatterns3.add("/taolop");
                 urlPatterns3.add("/themsinhvien");
+                urlPatterns3.add("/themgv");
                 urlPatterns3.add("/sualop");
                 urlPatterns3.add("/suathongtin");
                 urlPatterns3.add("/suagv");
                 urlPatterns3.add("/xoalop");
                 urlPatterns3.add("/xoasinhvien");
+                urlPatterns3.add("/xoagv");
 
 		mapConfig.put(ROLE_SUPERMOD, urlPatterns3);
                 
@@ -63,11 +65,14 @@ public class SecurityConfig {
 
 		urlPatterns4.add("/taolop");
                 urlPatterns4.add("/themsinhvien");
+                urlPatterns4.add("/themgv");
+                urlPatterns4.add("/chitietlop");
                 urlPatterns4.add("/sualop");
                 urlPatterns4.add("/suathongtin");
                 urlPatterns4.add("/suagv");
                 urlPatterns4.add("/xoalop");
                 urlPatterns4.add("/xoasinhvien");
+                urlPatterns4.add("/xoagv");
 
 		mapConfig.put(ROLE_ADMIN, urlPatterns4);
 	}

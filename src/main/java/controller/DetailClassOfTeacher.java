@@ -6,7 +6,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -28,12 +27,15 @@ public class DetailClassOfTeacher extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String teacherID = request.getParameter("magv");
+//        System.out.println("ma giao vien cua DetailClassTeacher sau khi nhan quay lai la " + teacherID);
         try {
-
+            request.setAttribute("thongtingv", SchoolRepo.detailTeacher(teacherID));
             request.setAttribute("danhsachlop", SchoolRepo.detailTeacher(teacherID).getListClasses());
             request.setAttribute("magv", teacherID);
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/detailclassofteacher.jsp");
             
+
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/detailclassofteacher.jsp");
+
             rd.forward(request, response);
         } catch (Exception e) {
             Logger.getLogger(IndexServlet.class.getName()).log(Level.SEVERE, null, e);

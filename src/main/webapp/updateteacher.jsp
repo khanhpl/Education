@@ -10,37 +10,34 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cập nhật thông tin giáo viên</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/main.css" rel="stylesheet">
+        <title>JSP Page</title>
     </head>
     <body>
-        <jsp:include page="header.jsp"/>
-        <div class="content-layout">
-            <h1 class="d-flex justify-content-center">Cập nhật thông tin giáo viên</h1>
+    
         <form action="" method="POST">
             <div class="input-group mb-3">
-                <span class="input-group-text width-150">Mã Giáo Viên</span>
-                <input type="text" class="form-control" id="txtName" name="magv" value="${requestScope.thongtingiaovien.teacherID}">
+                <span class="input-group-text width-150">Mã giáo viên</span>
+                <input type="text" class="form-control" id="txtName" name="magv" value="${gvcu.teacherID}" readonly="">               
             </div>
+            <p>${requestScope.kiemtragv.teacherID}</p>
             <div class="input-group mb-3">
-                <span class="input-group-text width-150">Tên Giáo Viên</span>
-                 <input type="text" class="form-control" id="txtName" name="tengv" value="${requestScope.thongtingiaovien.name}">
+                <span class="input-group-text width-150">Tên giáo viên</span>
+                <input type="text" class="form-control" id="txtName" name="tengv" value="${gvcu.name}">               
             </div>
+            <p>${requestScope.kiemtragv.name}</p>
             <div class="input-group mb-3">
                 <span class="input-group-text width-150">Email</span>
-                 <input type="text" class="form-control" id="txtName" name="mail" value="${requestScope.thongtingiaovien.email}">
+                <input type="text" class="form-control" id="txtName" name="email" value="${gvcu.email}">                                
             </div>
+            <p>${requestScope.kiemtragv.email}</p>
             <div class="input-group mb-3">
-                <span class="input-group-text width-150">Số Điện Thoại</span>
-                 <input type="text" class="form-control" id="txtName" name="sdt" value="${requestScope.thongtingiaovien.phone}">
+                <span class="input-group-text width-150">Điện thoại</span>
+                <input type="text" class="form-control" id="txtName" name="dienthoai" value="${gvcu.phone}">                             
             </div>
+            <p>${requestScope.kiemtragv.phone}</p>
             <div class="input-group mb-3">
-                <button type="submit" class="btn btn-primary margin-auto">Cập nhật</button>
+                <button type="submit" class="btn btn-primary margin-auto">Sửa</button>
             </div>
         </form>
-        <a href="trangchu" class="btn btn-link d-flex justify-content-end">Trang Chủ</a>
-        </div>
-        <jsp:include page="footer.jsp"/>
     </body>
 </html>

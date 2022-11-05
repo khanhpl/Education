@@ -39,7 +39,9 @@
                 <button type="submit" class="btn btn-primary margin-auto">Tạo mới</button>
             </div>
         </form>
+            <a href="chitietlop?magv=${requestScope.magv}&mamon=${requestScope.mamon}&malop=${requestScope.malop}" class="btn btn-link d-flex justify-content-end">Quay lại</a>
         <a href="trangchu" class="btn btn-link d-flex justify-content-end">Trang Chủ</a>
+
 
     </body>
 </html>

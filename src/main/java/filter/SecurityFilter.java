@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -116,7 +115,7 @@ public class SecurityFilter implements Filter {
 		// (After successful login).
 		Account loginedUser = AppUtils.getLoginedUser(request.getSession());
 
-		if (servletPath.equals("/login")) {
+		if (servletPath.equals("/dangnhap")) {
 			chain.doFilter(request, response);
 			return;
 		}
@@ -145,7 +144,7 @@ public class SecurityFilter implements Filter {
 				// Store the current page to redirect to after successful login.
 				int redirectId = AppUtils.storeRedirectAfterLoginUrl(request.getSession(), requestUri);
 
-				response.sendRedirect(wrapRequest.getContextPath() + "/login?redirectId=" + redirectId);
+				response.sendRedirect(wrapRequest.getContextPath() + "/dangnhap?redirectId=" + redirectId);
 				return;
 			}
 

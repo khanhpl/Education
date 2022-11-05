@@ -14,8 +14,6 @@
         <link href="css/main.css" rel="stylesheet">
     </head>
     <body>
-        <jsp:include page="header.jsp"/>
-        <div class="content-layout">
         <form action="" method="POST">
             <div class="input-group mb-3">
                 <span class="input-group-text width-150">Mã sinh viên</span>
@@ -41,8 +39,9 @@
                 <button type="submit" class="btn btn-primary margin-auto">Tạo mới</button>
             </div>
         </form>
+            <a href="chitietlop?magv=${requestScope.magv}&mamon=${requestScope.mamon}&malop=${requestScope.malop}" class="btn btn-link d-flex justify-content-end">Quay lại</a>
         <a href="trangchu" class="btn btn-link d-flex justify-content-end">Trang Chủ</a>
-        </div>
-        <jsp:include page="footer.jsp"/>
+
+
     </body>
 </html>

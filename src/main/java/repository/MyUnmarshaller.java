@@ -5,12 +5,8 @@
 package repository;
 
 import java.io.File;
-import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
-import javax.xml.validation.Schema;
-import javax.xml.validation.SchemaFactory;
 import models.School;
 
 /**
@@ -20,14 +16,13 @@ import models.School;
 public class MyUnmarshaller {
 
     public static void main(String[] args) {
-         String xmlName = "project.xml";
         School school = new School();
         school = getDataFromXml();
         System.out.println(school);
     }
 
     public static School getDataFromXml() {
-        File xmlFile = new File("D:\\XML\\Education\\project.xml");
+        File xmlFile = new File("C:\\Users\\HP\\OneDrive\\Desktop\\Education\\project.xml");
 
         
         School school = null;

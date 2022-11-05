@@ -15,22 +15,29 @@
     <body>
     
         <form action="" method="POST">
-            <div>
-                Mã Giáo Viên <input type="text" id="txtName" name="magv" value="${requestScope.thongtingiaovien.teacherID}">
+            <div class="input-group mb-3">
+                <span class="input-group-text width-150">Mã giáo viên</span>
+                <input type="text" class="form-control" id="txtName" name="magv" value="${gvcu.teacherID}" readonly="">               
             </div>
-            <div>
-                Tên Giáo Viên <input type="text" id="txtName" name="tengv" value="${requestScope.thongtingiaovien.name}">
+            <p>${requestScope.kiemtragv.teacherID}</p>
+            <div class="input-group mb-3">
+                <span class="input-group-text width-150">Tên giáo viên</span>
+                <input type="text" class="form-control" id="txtName" name="tengv" value="${gvcu.name}">               
             </div>
-            <div>
-                Email <input type="text" id="txtName" name="mail" value="${requestScope.thongtingiaovien.email}">
+            <p>${requestScope.kiemtragv.name}</p>
+            <div class="input-group mb-3">
+                <span class="input-group-text width-150">Email</span>
+                <input type="text" class="form-control" id="txtName" name="email" value="${gvcu.email}">                                
             </div>
-            <div>
-                Số Điện Thoại <input type="text" id="txtName" name="sdt" value="${requestScope.thongtingiaovien.phone}">
+            <p>${requestScope.kiemtragv.email}</p>
+            <div class="input-group mb-3">
+                <span class="input-group-text width-150">Điện thoại</span>
+                <input type="text" class="form-control" id="txtName" name="dienthoai" value="${gvcu.phone}">                             
             </div>
-            <div>
-                <button type="submit">Cập nhật</button>
+            <p>${requestScope.kiemtragv.phone}</p>
+            <div class="input-group mb-3">
+                <button type="submit" class="btn btn-primary margin-auto">Sửa</button>
             </div>
         </form>
-        <a href="trangchu">Trang Chủ</a>
     </body>
 </html>

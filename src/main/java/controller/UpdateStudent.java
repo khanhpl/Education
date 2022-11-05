@@ -6,7 +6,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -33,8 +32,13 @@ public class UpdateStudent extends HttpServlet {
         String classID = request.getParameter("malop");
         String studentID = request.getParameter("masinhvien");
         String teacherID = request.getParameter("magv");
+        String subjectID=request.getParameter("mamon");
         request.setAttribute("thongtinsua", SchoolRepo.detailStudent(teacherID, classID, studentID));
-        RequestDispatcher rd = getServletContext().getRequestDispatcher("/updatestudent.jsp?malop=" + classID + "&masinhvien=" + studentID);
+        request.setAttribute("malop", classID);
+        request.setAttribute("masinhvien", studentID);
+        request.setAttribute("magv", teacherID);
+        request.setAttribute("mamon", subjectID);
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/updatestudent.jsp?");
         rd.forward(request, response);
     }
 
@@ -43,23 +47,24 @@ public class UpdateStudent extends HttpServlet {
             throws ServletException, IOException {
         try {
             String classID = request.getParameter("malop");
+            String subjectID = request.getParameter("mamon");
             String studentID = request.getParameter("masinhvien");
+            
             String studentName = request.getParameter("tensinhvien");
             String email = request.getParameter("email");
             String phone = request.getParameter("dienthoai");
             String teacherID = request.getParameter("magv");
-            StudentValidate studentCheck = new StudentValidate(studentID, studentName, email, phone);
+            Student studentCheck = new Student(studentID, studentName, email, phone);
 
-            if (!ValidateRepo.checkInputStudent(classID, studentCheck)) {
+            if (!ValidateRepo.checkInputStudent(subjectID, studentCheck)) {
                 request.setAttribute("kiemtrasinhvien", ValidateRepo.nofiInputStudent("", studentCheck));
                 request.setAttribute("thongtinsua", studentCheck);
                 RequestDispatcher rd = getServletContext().getRequestDispatcher("/updatestudent.jsp?malop=" + classID + "&magv=" + teacherID);
                 rd.forward(request, response);
             } else {
-
                 Student student = new Student(studentID, studentName, email, phone);
                 SchoolRepo.updateStudent(studentID, student);
-                response.sendRedirect(request.getContextPath() + "/chitietlop?malop=" + classID);
+                response.sendRedirect(request.getContextPath() + "/chitietlop?magv=" + teacherID + "&malop=" + classID + "&mamon=" + subjectID);
             }
         } catch (Exception e) {
             Logger.getLogger(IndexServlet.class.getName()).log(Level.SEVERE, null, e);

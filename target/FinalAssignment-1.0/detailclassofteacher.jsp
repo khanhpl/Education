@@ -14,28 +14,45 @@
 
     <body>
         <div class="content-layout">
-            <jsp:include page="teacherinfo.jsp"></jsp:include>
-                <h1 class="d-flex justify-content-center">Danh sách lớp học</h1>
 
-                <table border="1" class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Mã lớp</th>
-                            <th>Mã môn học</th>
-                            <th>Môn học</th>
-                            <th>Thời gian bắt đầu</th>
-                            <th>Thời gian kết thúc</th>
-                            <th>Thao tác</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+            <div class="input-group mb-3">
+                <span class="input-group-text width-150">Tên giáo viên: </span>
+                <label class="form-control"><c:out value="${thongtingv.name}"/></label>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text width-150">Địa chỉ email: </span>
+                <label class="form-control"><c:out value="${thongtingv.email}"/></label>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text width-150">Số điện thoại:</span>
+                <label class="form-control"><c:out value="${thongtingv.phone}"/></label>
+            </div>
+
+
+            <h1 class="d-flex justify-content-center">Danh sách lớp học</h1>
+            <div class="d-flex justify-content-end">
+                <a href="taolop?&magv=${requestScope.magv}" class="btn btn-primary">Tạo lớp mới</a>
+            </div>
+
+            <table border="1" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Mã lớp</th>
+                        <th>Mã môn học</th>
+                        <th>Môn học</th>
+                        <th>Thời gian bắt đầu</th>
+                        <th>Thời gian kết thúc</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
                     <c:forEach var="row" items="${requestScope.danhsachlop}">
                         <c:if test="${!empty row.classID}">
                             <tr>
                                 <td>
                                     <c:out value="${row.classID}" />
                                 </td>
-                                 <td>
+                                <td>
                                     <c:out value="${row.subject.subjectID}" />
                                 </td>
                                 <td>
@@ -50,9 +67,9 @@
 
                                 <td>
                                     <div class="margin-auto">
-                                        <a href="chitietlop?malop=${row.classID}&magv=${requestScope.magv}"
+                                        <a href="chitietlop?malop=${row.classID}&magv=${requestScope.magv}&mamon=${row.subject.subjectID}"
                                            class="btn btn-success width-percentage-30">Chi tiết</a>
-                                           <a href="sualop?malop=${row.classID}&magv=${requestScope.magv}&mamon=${row.subject.subjectID}"
+                                        <a href="sualop?malop=${row.classID}&magv=${requestScope.magv}&mamon=${row.subject.subjectID}"
                                            class="btn btn-warning width-percentage-30">Sửa</a>
                                         <a href="xoalop?malop=${row.classID}&magv=${requestScope.magv}&mamon=${row.subject.subjectID}"
                                            class="btn btn-danger width-percentage-30">Xóa</a>
@@ -63,9 +80,14 @@
                     </c:forEach>
                 </tbody>
             </table>
-            <div class="d-flex justify-content-end">
-                <a href="taolop?&magv=${requestScope.magv}" class="btn btn-primary">Tạo mới</a>
-            </div>
+        </div>
+
+        <div class="d-flex justify-content-end">
+            <a href="trangchu" class="btn btn-primary">Quay lại</a>
+        </div>
+        <div class="d-flex justify-content-end">
+            <a href="trangchu" class="btn btn-primary">Trang chủ</a>
+        </div>
     </body>
 
 </html>
