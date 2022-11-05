@@ -16,6 +16,7 @@
     <body>
         <jsp:include page="header.jsp"/>
         <div class="content-layout">
+            <h1 class="d-flex justify-content-center">Thêm sinh viên</h1>
         <form action="" method="POST">
             <div class="input-group mb-3">
                 <span class="input-group-text width-150">Mã sinh viên</span>

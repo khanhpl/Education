@@ -9,11 +9,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Thêm sinh viên</title>
+        <title>Thêm giáo viên</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/main.css" rel="stylesheet">
     </head>
     <body>
+        <jsp:include page="header.jsp"/>
+        <div class="content-layout">
+            <h1 class="d-flex justify-content-center">Thêm giáo viên</h1>
         <form action="" method="POST">
             <div class="input-group mb-3">
                 <span class="input-group-text width-150">Mã giáo viên</span>
@@ -36,10 +39,10 @@
             </div>
             <p>${requestScope.kiemtragv.phone}</p>
             <div class="input-group mb-3">
-                <button type="submit" class="btn btn-primary margin-auto">Tạo</button>
+                <button type="submit" class="btn btn-primary margin-auto">Tạo Mới</button>
             </div>
         </form>
         <a href="trangchu" class="btn btn-link d-flex justify-content-end">Trang Chủ</a>
-
+        </div>
     </body>
 </html>

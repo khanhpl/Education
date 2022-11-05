@@ -66,7 +66,6 @@ public class SecurityConfig {
 		urlPatterns4.add("/taolop");
                 urlPatterns4.add("/themsinhvien");
                 urlPatterns4.add("/themgv");
-                urlPatterns4.add("/chitietlop");
                 urlPatterns4.add("/sualop");
                 urlPatterns4.add("/suathongtin");
                 urlPatterns4.add("/suagv");

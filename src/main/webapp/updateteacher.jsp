@@ -40,7 +40,7 @@
             </div>
             <p>${requestScope.kiemtragv.phone}</p>
             <div class="input-group mb-3">
-                <button type="submit" class="btn btn-primary margin-auto">Sửa</button>
+                <button type="submit" class="btn btn-primary margin-auto">Cập Nhật</button>
             </div>
         </form>
         </div>

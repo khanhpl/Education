@@ -29,7 +29,7 @@ public class IndexServlet extends HttpServlet {
        // SchoolRepo.read();
 
         try {
-            request.setAttribute("teacher", SchoolRepo.schoolData.getTeacher());
+            request.setAttribute("teacher", SchoolRepo.read().getTeacher());
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
             rd.forward(request, response);
         } catch (Exception e) {
