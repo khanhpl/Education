@@ -52,8 +52,8 @@
                                 <td><c:out value="${row.phone}"/></td>                    
                                 <td>
                                     <div class="margin-auto">
-                                        <a href="suathongtin?masinhvien=${row.studentID}&malop=${requestScope.thongtinlop.classID}&magv=${requestScope.magv}" class="btn btn-warning width-percentage-45">Sửa thông tin sinh viên</a>
-                                        <a href="xoasinhvien?masinhvien=${row.studentID}&malop=${requestScope.thongtinlop.classID}&magv=${requestScope.magv}" class="btn btn-danger width-percentage-45">Xóa</a>
+                                        <a href="suathongtin?masinhvien=${row.studentID}&malop=${requestScope.thongtinlop.classID}&magv=${requestScope.magv}&mamon=${requestScope.mamon}" class="btn btn-warning width-percentage-45">Sửa thông tin sinh viên</a>
+                                        <a href="xoasinhvien?masinhvien=${row.studentID}&malop=${requestScope.thongtinlop.classID}&magv=${requestScope.magv}&mamon=${requestScope.mamon}" class="btn btn-danger width-percentage-45">Xóa</a>
                                     </div>
                                 </td>
                             </tr>
@@ -61,8 +61,9 @@
                     </c:forEach>
                 </tbody>
             </table>
+            <a href="danhsachlopcuagv?magv=${requestScope.magv}">Quay lại</a>
             <div class="d-flex justify-content-end">
-                <a class="btn btn-success mb-1" href="themsinhvien?malop=${requestScope.thongtinlop.classID}&magv=${requestScope.magv}&mamon=${requestScope.thongtinlop.subject.subjectID}"">Thêm sinh viên</a>
+                <a class="btn btn-success mb-1" href="themsinhvien?malop=${requestScope.malop}&magv=${requestScope.magv}&mamon=${requestScope.mamon}"">Đăng ký sinh viên</a>
             </div> 
             <a href="trangchu" class="btn btn-link d-flex justify-content-end">Trang Chủ</a>
         </div>

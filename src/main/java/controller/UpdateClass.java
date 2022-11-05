@@ -6,9 +6,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -18,7 +15,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import models.Classes;
-import models.Student;
 import models.Subject;
 import repository.SchoolRepo;
 import repository.ValidateRepo;
@@ -36,45 +32,45 @@ public class UpdateClass extends HttpServlet {
         String classID = request.getParameter("malop");
         String teacherID = request.getParameter("magv");
         String subjectID = request.getParameter("mamon");
-        request.setAttribute("thongtinlop", SchoolRepo.detailClass(teacherID, classID));
-        request.setAttribute("mamoncu", subjectID);
-        System.out.println(subjectID + " day la ma mon cua doget");
-        RequestDispatcher rd = getServletContext().getRequestDispatcher("/updateclass.jsp?malop=" + classID + "&magv=" + teacherID);
+        request.setAttribute("thongtinlop", SchoolRepo.detailClass(teacherID, classID, subjectID));
+        request.setAttribute("magv", teacherID);
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/updateclass.jsp");
         rd.forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
+try {
             String teacherID = request.getParameter("magv");
             String classID = request.getParameter("malop");
             String subjectID = request.getParameter("mamon");
-            String subjectName = request.getParameter("tenmon");
-            String timeStart = request.getParameter("batdau");
-            String timeEnd = request.getParameter("ketthuc");
+            String subIDNew = request.getParameter("mamonmoi");
+            String subjectNameNew = request.getParameter("tenmon");
+            String timeStartNew = request.getParameter("batdau");
+            String timeEndNew = request.getParameter("ketthuc");
+            request.setAttribute("magv", teacherID);
 
-            System.out.println(timeStart+"day la gio bat dau ");
-//            String sub = request.getParameter("mamoncu");
-//
-//            System.out.println(sub + "day la mamon cu cua dopost ma mon can sua updateclass");
-//            System.out.println(teacherID + "day la magv cua dopost ma mon can sua updateclass");
-//            System.out.println(classID + "day la malop cua dopost ma mon can sua updateclass");
-            System.out.println(subjectID + "day la mamon moi cua dopost ma mon can sua updateclass");
-//            System.out.println(teacherID + " ma giao vien cua uppdateClasss");
-            Subject sbCheck = new Subject(subjectID, subjectName);
-            Classes classCheck = new Classes(classID, timeStart, timeEnd, sbCheck);
+            Subject sbCheck = new Subject(subIDNew, subjectNameNew);
+            Classes classCheck = new Classes(classID, timeStartNew, timeEndNew, sbCheck);
 
-            if (!ValidateRepo.checkInputClasses(subjectID, classCheck)) {
-                request.setAttribute("kiemtralop", ValidateRepo.nofiInputClasses(classCheck, subjectID));
+            if (!ValidateRepo.checkInputClasses(classCheck)) {
+                request.setAttribute("kiemtralop", ValidateRepo.nofiInputClasses(classCheck));
                 request.setAttribute("thongtinlop", classCheck);
+
                 RequestDispatcher rd = getServletContext().getRequestDispatcher("/updateclass.jsp");
                 rd.forward(request, response);
             } else {
+                if (!ValidateRepo.checkClassID(classCheck.getClassID(), classCheck.getSubject().getSubjectID())) {
+                    request.setAttribute("kiemtralop", ValidateRepo.nofiInputClasses(classCheck));
+                    request.setAttribute("thongtinlop", classCheck);
 
-                SchoolRepo.updateClass(teacherID, classID, subjectID, classCheck);
-
-                response.sendRedirect(request.getContextPath() + "/danhsachlopcuagv?magv=" + teacherID);
+                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/updateclass.jsp");
+                    rd.forward(request, response);
+                } else {
+                    SchoolRepo.updateClass(teacherID, classID, subjectID, classCheck);
+                    response.sendRedirect(request.getContextPath() + "/danhsachlopcuagv?magv=" + teacherID);
+                }
             }
         } catch (Exception e) {
             Logger.getLogger(IndexServlet.class.getName()).log(Level.SEVERE, null, e);

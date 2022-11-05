@@ -6,7 +6,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -29,14 +28,17 @@ public class DetailClasses extends HttpServlet {
             throws ServletException, IOException {
         String classID = request.getParameter("malop");
         String teacherID = request.getParameter("magv");
+        String subjectID = request.getParameter("mamon");
         try {
-            request.setAttribute("thongtinlop", SchoolRepo.detailClass(teacherID, classID));
+            request.setAttribute("thongtinlop", SchoolRepo.detailClass(teacherID, classID, subjectID));
             request.setAttribute("magv", teacherID);
+            request.setAttribute("mamon", subjectID);
+            request.setAttribute("malop", classID);
+
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/detailclass.jsp");
             rd.forward(request, response);
         } catch (Exception e) {
-            Logger.getLogger(IndexServlet.class.getName()).log(Level.SEVERE, null, e);
-
+            Logger.getLogger(IndexServlet.class.getName()).log(Level.SEVERE, null, e);            
         }
     }
 

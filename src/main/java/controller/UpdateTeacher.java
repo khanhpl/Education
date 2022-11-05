@@ -5,7 +5,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -14,10 +13,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import models.Classes;
-import models.Subject;
 import models.Teacher;
+import models.TeacherValidate;
 import repository.SchoolRepo;
+import repository.ValidateRepo;
 
 /**
  *
@@ -26,11 +25,10 @@ import repository.SchoolRepo;
 @WebServlet(name = "suagv", urlPatterns = {"/suagv"})
 public class UpdateTeacher extends HttpServlet {
 
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String teacherID = request.getParameter("magv");
 
         request.setAttribute("thongtingiaovien", SchoolRepo.detailTeacher(teacherID));
@@ -38,23 +36,28 @@ public class UpdateTeacher extends HttpServlet {
         rd.forward(request, response);
     }
 
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                try {
-            String teacherID = request.getParameter("magv");
-            String name = request.getParameter("tengv");
-            String mail = request.getParameter("mail");
-            int phone = Integer.parseInt(request.getParameter("sdt"));
+        
+        String teacherID = request.getParameter("magv");
+        String name = request.getParameter("tengv");
+        String email = request.getParameter("email");
+        String phone = request.getParameter("dienthoai");
 
-          //  Teacher teacher = new Teacher(teacherID, name, mail, phone);
-           // SchoolRepo.updateTeacher(teacher);
-
-            response.sendRedirect(request.getContextPath() + "/trangchu");
+        Teacher teacherCheck = new Teacher(teacherID, name, email, phone);
+        try {
+            if (!ValidateRepo.checkInputTeacher(teacherCheck)) {
+                request.setAttribute("gvcu", teacherCheck);
+                TeacherValidate udNofi = ValidateRepo.nofiInputTeacher(teacherCheck);
+                udNofi.setTeacherID("");
+                request.setAttribute("kiemtragv", udNofi);
+            } else {
+                SchoolRepo.updateTeacher(teacherID, teacherCheck);
+                response.sendRedirect(request.getContextPath() + "/trangchu");
+            }
         } catch (Exception e) {
             Logger.getLogger(IndexServlet.class.getName()).log(Level.SEVERE, null, e);
         }
     }
-
 }

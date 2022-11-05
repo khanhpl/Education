@@ -15,12 +15,13 @@
         <link href="css/main.css" rel="stylesheet">
     </head>
     <body>
+        <jsp:include page="header.jsp"/>
         <div class="content-layout">
             <h1 class="d-flex justify-content-center">Cập nhật thông tin lớp học</h1>
             <form action="" method="POST">
                 <div class="input-group mb-3">
                     <span class="input-group-text width-150">Mã môn</span>
-                    <input type="text" class="form-control" id="txtName" name="mamon" value="${requestScope.thongtinlop.subject.subjectID}">
+                    <input type="text" class="form-control" id="txtName" name="mamonmoi" value="${requestScope.thongtinlop.subject.subjectID}">
                 </div>
                 <p>${requestScope.kiemtralop.subjectID}</p>
                 <div class="input-group mb-3">
@@ -39,12 +40,15 @@
                     <input type="text" class="form-control" id="txtName" name="ketthuc" value="${requestScope.thongtinlop.timeEnd}">
                 </div>
                 <p>${requestScope.kiemtralop.timeEnd}</p>
-                <c:set var="mamoncu" value="${requestScope.mamoncu}"/>
+
                 <div class="input-group mb-3">
                     <button type="submit" class="btn btn-primary margin-auto">Cập nhật</button>
                 </div>
             </form>
+    
+                <a href="danhsachlopcuagv?magv=${requestScope.magv}">Quay lại</a>
             <a href="trangchu" class="btn btn-link d-flex justify-content-end">Trang Chủ</a>
         </div>
+        <jsp:include page="footer.jsp"/>
     </body>
 </html>

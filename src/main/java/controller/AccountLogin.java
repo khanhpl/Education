@@ -5,7 +5,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -15,8 +14,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import models.Account;
-import models.Teacher;
 import repository.AccountRepo;
 import repository.SchoolRepo;
 import utils.AppUtils;
@@ -41,7 +38,9 @@ public class AccountLogin extends HttpServlet {
         try {
             String _u = request.getParameter("username");
             String _p = request.getParameter("password");
-            AccountRepo.initDataAccount();
+            AccountRepo.read();
+            
+            
             boolean vail = AccountRepo.checkLogin(_u, _p);
             if (vail) {
                 SchoolRepo.read();

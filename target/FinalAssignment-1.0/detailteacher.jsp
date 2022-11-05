@@ -10,26 +10,32 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Thông tin giáo viên</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/main.css" rel="stylesheet">
     </head>
     <body>
-
-        <div>
-            Tên giáo viên: <c:out value="${requestScope.thongtingiaovien.name}"/>
+        <jsp:include page="header.jsp"/>
+        <div class="content-layout">
+            <h1 class="d-flex justify-content-center">Thông tin giáo viên</h1>
+        <div class="input-group mb-3">
+            <span class="input-group-text width-150">Tên giáo viên</span>
+            <label class="form-control"><c:out value="${requestScope.thongtingiaovien.name}"/></label>
         </div>
-        <div>
-            Địa chỉ mail: <c:out value="${requestScope.thongtingiaovien.email}"/>
+        <div class="input-group mb-3">
+            <span class="input-group-text width-150">Địa chỉ mail</span>
+            <label class="form-control"><c:out value="${requestScope.thongtingiaovien.email}"/></label>
         </div>
-        <div>
-            Điện thoại: <c:out value="${requestScope.thongtingiaovien.phone}"/>
+        <div class="input-group mb-3">
+            <span class="input-group-text width-150">Điện thoại</span>
+            <label class="form-control"><c:out value="${requestScope.thongtingiaovien.phone}"/></label>
         </div>
-
         <br>
-        <div>
-            <a href="suagv?magv=${requestScope.thongtingiaovien.teacherID}">Sửa giáo viên</a>
+        <div class="d-flex justify-content-end">
+            <a href="suagv?magv=${requestScope.thongtingiaovien.teacherID}" class="btn btn-primary">Cập nhật thông tin</a>
         </div> 
-          <div>
-            <a href="trangchu">Trang chủ</a>
-        </div> 
+        <a href="trangchu" class="btn btn-link d-flex justify-content-end">Trang Chủ</a>
+        </div>
+        <jsp:include page="footer.jsp"/>
     </body>
 </html>

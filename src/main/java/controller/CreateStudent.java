@@ -50,25 +50,27 @@ public class CreateStudent extends HttpServlet {
             String email = request.getParameter("email");
             String phone = request.getParameter("dienthoai");
             String subjectID = request.getParameter("mamon");
+            System.out.println(subjectID);
             // request.setAttribute("malop", classID);
             //  request.setAttribute("magv", teacherID);
 
-            StudentValidate studentCheck = new StudentValidate(studentID, studentName, email, phone);
-
-            if (!ValidateRepo.checkInputStudent(subjectID, studentCheck)) {
-                request.setAttribute("kiemtrasinhvien", ValidateRepo.nofiInputStudent(subjectID, studentCheck));
-                request.setAttribute("sinhviencu", studentCheck);
+            Student student = new Student(studentID, studentName, email, phone);
+            
+            if (!ValidateRepo.checkInputStudent(subjectID, student)) {
+                request.setAttribute("kiemtrasinhvien", ValidateRepo.nofiInputStudent(subjectID, student));
+                request.setAttribute("sinhviencu", student);
                 RequestDispatcher rd = getServletContext().getRequestDispatcher("/createstudent.jsp?malop=" + classID + "&mamon=" + subjectID);
                 rd.forward(request, response);
             } else {
-
-                Student s = new Student(studentID, studentName, email, phone);
-
-                SchoolRepo.createStudent(teacherID, classID, s);
-                System.out.println(teacherID + " đây là mã giáo viên của createstudent");
-                response.sendRedirect(request.getContextPath() + "/chitietlop?malop=" + classID + "&magv=" + teacherID);
-//            RequestDispatcher rd = getServletContext().getRequestDispatcher("/chitietlop?malop=" + classID);
-//            rd.forward(request, response);
+                if (!ValidateRepo.checkStudentID(subjectID, studentID)) {
+                    request.setAttribute("kiemtrasinhvien", ValidateRepo.nofiInputStudent(subjectID, student));
+                    request.setAttribute("sinhviencu", student);
+                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/createstudent.jsp?malop=" + classID + "&mamon=" + subjectID);
+                    rd.forward(request, response);
+                } else {
+                    SchoolRepo.createStudent(teacherID, classID, subjectID, student);
+                    response.sendRedirect(request.getContextPath() + "/danhsachlopcuagv?magv=" + teacherID + "&malop=" + classID + "&mamon=" + subjectID);
+                }
             }
         } catch (Exception e) {
             Logger.getLogger(IndexServlet.class.getName()).log(Level.SEVERE, null, e);

@@ -5,7 +5,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -31,7 +30,6 @@ public class DetailTeacher extends HttpServlet {
 
         try {
             Teacher detailTeacher = SchoolRepo.detailTeacher(teacherID);
-            System.out.println(detailTeacher);
             request.setAttribute("thongtingiaovien", detailTeacher);
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/detailteacher.jsp");
             rd.forward(request, response);

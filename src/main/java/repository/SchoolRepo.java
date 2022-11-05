@@ -62,15 +62,15 @@ public class SchoolRepo {
         save();
     }
     
-    public static void createStudent(String teacherID, String classID, Student s) {
+    public static void createStudent(String teacherID, String classID, String subjectID, Student s) {
         List<Teacher> listTeacher = schoolData.getTeacher();
         for (int i = 0; i < listTeacher.size(); i++) {
             if (listTeacher.get(i).getTeacherID().equalsIgnoreCase(teacherID)) {
                 List<Classes> listClass = listTeacher.get(i).getListClasses();
                 for (int j = 0; j < listClass.size(); j++) {
-                    if (listClass.get(j).getClassID().equalsIgnoreCase(classID)) {
+                    if (listClass.get(j).getClassID().equalsIgnoreCase(classID) && listClass.get(j).getSubject().getSubjectID().equalsIgnoreCase(subjectID)) {
                         List<Student> listStudent = listClass.get(j).getStudents();
-                        listClass.get(j).getStudents().add(s);
+                        listStudent.add(s);
                         for (int z = 0; z < listStudent.size(); z++) {
                             if (listStudent.get(z).getStudentID() == "") {
                                 listStudent.remove(z);
@@ -85,6 +85,7 @@ public class SchoolRepo {
     
     public static Teacher detailTeacher(String teacherId) {
         List<Teacher> listTeacher = schoolData.getTeacher();
+        System.out.println(listTeacher);
         for (int i = 0; i < listTeacher.size(); i++) {
             if (listTeacher.get(i).getTeacherID().equalsIgnoreCase(teacherId)) {
                 return listTeacher.get(i);
@@ -93,13 +94,13 @@ public class SchoolRepo {
         return null;
     }
     
-    public static Classes detailClass(String teacherID, String classID) {
+    public static Classes detailClass(String teacherID, String classID, String subjectID) {
         List<Teacher> listTeacher = schoolData.getTeacher();
         for (int i = 0; i < listTeacher.size(); i++) {
             if (listTeacher.get(i).getTeacherID().equalsIgnoreCase(teacherID)) {
                 List<Classes> listClass = listTeacher.get(i).getListClasses();
                 for (int j = 0; j < listClass.size(); j++) {
-                    if (listClass.get(j).getClassID().equalsIgnoreCase(classID)) {
+                    if (listClass.get(j).getClassID().equalsIgnoreCase(classID) && listClass.get(j).getSubject().getSubjectID().equalsIgnoreCase(subjectID)) {
                         return listClass.get(j);
                     }
                 }
@@ -278,6 +279,7 @@ public class SchoolRepo {
         //Test chức năng
         SchoolRepo.read();
         System.out.println(schoolData);
+        deleteTeacher("namnh6");
     }
     
 }

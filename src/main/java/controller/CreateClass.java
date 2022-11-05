@@ -6,7 +6,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -52,23 +51,30 @@ public class CreateClass extends HttpServlet {
             Subject sbCheck = new Subject(subjectID, subjectName);
 
             Classes classCheck = new Classes(classID, timeStart, timeEnd, sbCheck);
-            if (!ValidateRepo.checkInputClasses(subjectID, classCheck)) {
-                request.setAttribute("kiemtralop", ValidateRepo.nofiInputClasses(classCheck, subjectID));
+            if (!ValidateRepo.checkInputClasses(classCheck)) {
+                request.setAttribute("kiemtralop", ValidateRepo.nofiInputClasses(classCheck));
                 request.setAttribute("lopnhapcu", classCheck);
                 RequestDispatcher rd = getServletContext().getRequestDispatcher("/createclass.jsp");
                 rd.forward(request, response);
             } else {
-                List<Student> listStudentNull = new ArrayList<>();
+                if (!ValidateRepo.checkClassID(classCheck.getClassID(), classCheck.getSubject().getSubjectID())) {
+                    request.setAttribute("kiemtralop", ValidateRepo.nofiInputClasses(classCheck));
+                    request.setAttribute("lopnhapcu", classCheck);
+                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/createclass.jsp");
+                    rd.forward(request, response);
+                } else {
+                    List<Student> listStudentNull = new ArrayList<>();
 
-                Student studentNull = SchoolRepo.studentNull();
-                listStudentNull.add(studentNull);
+                    Student studentNull = SchoolRepo.studentNull();
+                    listStudentNull.add(studentNull);
 
-                Subject sb = new Subject(subjectID, subjectName);
-                Classes clas = new Classes(classID, timeStart, timeEnd, sb, listStudentNull);
+                    Subject sb = new Subject(subjectID, subjectName);
+                    Classes clas = new Classes(classID, timeStart, timeEnd, sb, listStudentNull);
 
-                SchoolRepo.createClass(teacherID, clas);
+                    SchoolRepo.createClass(teacherID, clas);
 
-                response.sendRedirect(request.getContextPath() + "/danhsachlopcuagv?magv=" + teacherID);
+                    response.sendRedirect(request.getContextPath() + "/danhsachlopcuagv?magv=" + teacherID);
+                }
             }
         } catch (Exception e) {
             Logger.getLogger(IndexServlet.class.getName()).log(Level.SEVERE, null, e);

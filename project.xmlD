@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<school schoolName="FPT">
+    <teacher teacherID="hung7">
+        <name>Mr. HUNG 12356</name>
+        <email>hung3@fpt.edu.vn</email>
+        <phone>012342113</phone>
+        <class classID="se1111" TimeStart="12" TimeEnd="23">
+            <subject subjectID="aaaaaq">
+                <subjectName>safdsafga</subjectName>
+            </subject>
+            <student studentID="se1231232">
+                <name>aefvafdsa</name>
+                <email>qwedwq@gmail.com</email>
+                <phone>0231232975</phone>
+            </student>
+        </class>
+        <class classID="se1235" TimeStart="2" TimeEnd="23">
+            <subject subjectID="bbbbbb">
+                <subjectName>bbbbbbbb</subjectName>
+            </subject>
+            <student studentID="">
+                <name></name>
+                <email></email>
+                <phone></phone>
+            </student>
+        </class>
+        <class classID="se1231" TimeStart="12" TimeEnd="23">
+            <subject subjectID="ccccc">
+                <subjectName>ccccccc</subjectName>
+            </subject>
+            <student studentID="">
+                <name></name>
+                <email></email>
+                <phone></phone>
+            </student>
+        </class>
+    </teacher>
+</school>

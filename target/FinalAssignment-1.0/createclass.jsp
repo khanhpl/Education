@@ -14,6 +14,7 @@
         <link href="css/main.css" rel="stylesheet">
     </head>
     <body>
+        <jsp:include page="header.jsp"/>
         <div class="content-layout">
             <h1 class="d-flex justify-content-center">Tạo lớp mới</h1>
             <form action="" method="POST">
@@ -46,7 +47,9 @@
                     <button type="submit" class="btn btn-primary margin-auto">Tạo mới</button>
                 </div>
             </form>
-            <a href="trangchu" class="btn btn-link">Trang Chủ</a>
+                <a href="danhsachlopcuagv?magv=${requestScope.magv}">Quay lại</a>
+            <a href="trangchu" class="btn btn-link">Trang Chủ</a>  
         </div>
+        <jsp:include page="footer.jsp"/>
     </body>
 </html>

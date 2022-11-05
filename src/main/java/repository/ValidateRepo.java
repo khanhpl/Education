@@ -13,6 +13,7 @@ import models.Student;
 import models.StudentValidate;
 import models.Subject;
 import models.Teacher;
+import models.TeacherValidate;
 
 /**
  *
@@ -20,16 +21,13 @@ import models.Teacher;
  */
 public class ValidateRepo {
 
-    public static boolean checkInputClasses(String subjectID, Classes classInput) {
+    public static boolean checkInputClasses(Classes classInput) {
         //ma lop
         boolean check = true;
         if (classInput.getClassID().isEmpty() || classInput.getClassID().trim() == "") {
             check = false;
         }
         if (!classInput.getClassID().matches("[a-zA-Z]{2}[0-9]{4}")) {
-            check = false;
-        }
-        if (!checkClassID(classInput.getClassID(), subjectID)) {
             check = false;
         }
 
@@ -64,7 +62,7 @@ public class ValidateRepo {
         return check;
     }
 
-    public static ClassesValidate nofiInputClasses(Classes classInput, String subjectIDOfClas) {
+    public static ClassesValidate nofiInputClasses(Classes classInput) {
         String classID = "";
         String timeStart = "";
         String timeEnd = "";
@@ -105,7 +103,7 @@ public class ValidateRepo {
             if (!classInput.getSubject().getSubjectID().matches("[a-zA-Z]{2,4}[a-zA-Z0-9]{0,4}")) {
                 subjectID = "Mã môn không hợp lệ";
             } else {
-                if (!checkClassID(classInput.getClassID(), subjectIDOfClas)) {
+                if (!checkClassID(classInput.getClassID(), classInput.getSubject().getSubjectID())) {
                     subjectID = "Môn học này đã có giáo viên khác dạy";
                 }
             }
@@ -122,16 +120,13 @@ public class ValidateRepo {
         return nofi;
     }
 
-    public static boolean checkInputStudent(String subjectID, StudentValidate student) {
+    public static boolean checkInputStudent(String subjectID, Student student) {
         boolean check = true;
         //ma sinh vien
         if (student.getStudentID().isEmpty() || student.getStudentID().trim() == "") {
             check = false;
         }
         if (!student.getStudentID().matches("[a-zA-Z]{2}[0-9]{6,7}")) {
-            check = false;
-        }
-        if (!checkStudentID(subjectID, student.getStudentID())) {
             check = false;
         }
 
@@ -159,7 +154,7 @@ public class ValidateRepo {
         return check;
     }
 
-    public static StudentValidate nofiInputStudent(String subjectID, StudentValidate student) {
+    public static StudentValidate nofiInputStudent(String subjectID, Student student) {
         String studentID = "";
         String studentName = "";
         String email = "";
@@ -203,6 +198,81 @@ public class ValidateRepo {
         return studentVali;
     }
 
+    public static boolean checkInputTeacher(Teacher teacherInput) {
+        boolean check = true;
+        if (teacherInput.getTeacherID().isEmpty() || teacherInput.getTeacherID().trim() == "") {
+            check = false;
+        }
+        if (!teacherInput.getTeacherID().matches("([a-zA-Z]{3,}[0-9]{0,}){1,}")) {
+            check = false;
+        }
+
+        if (teacherInput.getName().isEmpty() || teacherInput.getName().trim() == "") {
+            check = false;
+        }
+
+        if (teacherInput.getEmail().isEmpty() || teacherInput.getEmail().trim() == "") {
+            check = false;
+        }
+        if (!teacherInput.getEmail().matches("[a-zA-Z0-9]{4,}@[a-zA-Z0-9]{2,5}(.[a-zA-Z0-9]{2,5}){1,3}")) {
+            check = false;
+        }
+
+ 
+        if (teacherInput.getPhone().isEmpty() || teacherInput.getPhone() == "") {
+            check = false;
+        }
+        if (!teacherInput.getPhone().matches("^0[1-9][0-9]{8,9}")) {
+            check = false;
+        }
+
+        return check;
+    }
+
+    public static TeacherValidate nofiInputTeacher(Teacher teacher) {
+        String teacherID = "";
+        String teacherName = "";
+        String email = "";
+        String phone = "";
+        if (teacher.getTeacherID().isEmpty() || teacher.getTeacherID().trim() == "") {
+            teacherID = "Vui lòng nhập ID giáo viên";
+        } else {
+            if (!teacher.getTeacherID().matches("([a-zA-Z]{3,}[0-9]{0,}){1,}")) {
+                teacherID = "Nhập chữ cái và số, không gồm các kí tự đặc biệt";
+            } else {
+                if (!checkTeacherID(teacher.getTeacherID())) {
+                    teacherID = "Mã giáo viên đã tồn tại";
+                }
+            }
+        }
+
+        //ten sinh vien
+        if (teacher.getName().isEmpty() || teacher.getName().trim() == "") {
+            teacherName = "Vui lòng nhập tên giáo viên";
+        }
+
+        //email
+        if (teacher.getEmail().isEmpty() || teacher.getEmail().trim() == "") {
+            email = "Vui lòng nhập email";
+        } else {
+            if (!teacher.getEmail().matches("[a-zA-Z0-9]{4,}@[a-zA-Z0-9]{2,5}(.[a-zA-Z0-9]{2,5}){1,3}")) {
+                email = "Email không hợp lệ";
+            }
+        }
+
+        //so dien thoai
+        if (teacher.getPhone().isEmpty() || teacher.getPhone() == "") {
+            phone = "Vui lòng nhập số điện thoại";
+        } else {
+            if (!teacher.getPhone().matches("0[1-9][0-9]{8,9}")) {
+                phone = "Số điện thoại không hợp lệ";
+            }
+        }
+
+        TeacherValidate t = new TeacherValidate(teacherID, teacherName, email, phone);
+        return t;
+    }
+
     public static boolean checkClassID(String classID, String subjectID) {
         boolean check = true;
         List<Teacher> listTeacher = SchoolRepo.schoolData.getTeacher();
@@ -234,10 +304,21 @@ public class ValidateRepo {
         return check;
     }
 
+    public static boolean checkTeacherID(String teacherID) {
+        boolean check = true;
+        List<Teacher> listTeacher = SchoolRepo.schoolData.getTeacher();
+        for (int i = 0; i < listTeacher.size(); i++) {
+            if (listTeacher.get(i).getTeacherID().equalsIgnoreCase(teacherID)) {
+                check = false;
+            }
+        }
+        return check;
+    }
+
     public static void main(String[] args) {
-        SchoolRepo.read();
-        StudentValidate st = new StudentValidate("se123456", "123", "123", "123");
-        System.out.println(nofiInputStudent("aaaa", st));
+//        SchoolRepo.read();
+//        StudentValidate st = new StudentValidate("se123456", "123", "123", "123");
+//        System.out.println(nofiInputStudent("aaaa", st));
 
     }
 

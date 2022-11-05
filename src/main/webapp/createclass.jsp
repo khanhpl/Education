@@ -47,7 +47,8 @@
                     <button type="submit" class="btn btn-primary margin-auto">Tạo mới</button>
                 </div>
             </form>
-            <a href="trangchu" class="btn btn-link">Trang Chủ</a>
+                <a href="danhsachlopcuagv?magv=${requestScope.magv}">Quay lại</a>
+            <a href="trangchu" class="btn btn-link">Trang Chủ</a>  
         </div>
         <jsp:include page="footer.jsp"/>
     </body>
