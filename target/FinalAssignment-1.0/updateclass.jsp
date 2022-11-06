@@ -42,11 +42,11 @@
                 <p>${requestScope.kiemtralop.timeEnd}</p>
 
                 <div class="input-group mb-3">
-                    <button type="submit" class="btn btn-primary margin-auto">Cập nhật</button>
+                    <button type="submit" class="btn btn-primary margin-auto">Cập Nhật</button>
                 </div>
             </form>
     
-                <a href="danhsachlopcuagv?magv=${requestScope.magv}">Quay lại</a>
+            <a href="danhsachlopcuagv?magv=${requestScope.magv}">Quay lại</a>
             <a href="trangchu" class="btn btn-link d-flex justify-content-end">Trang Chủ</a>
         </div>
         <jsp:include page="footer.jsp"/>

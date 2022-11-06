@@ -61,10 +61,11 @@
                     </c:forEach>
                 </tbody>
             </table>
-            <a href="danhsachlopcuagv?magv=${requestScope.magv}">Quay lại</a>
+            
             <div class="d-flex justify-content-end">
                 <a class="btn btn-success mb-1" href="themsinhvien?malop=${requestScope.malop}&magv=${requestScope.magv}&mamon=${requestScope.mamon}"">Đăng ký sinh viên</a>
             </div> 
+            <a href="danhsachlopcuagv?magv=${requestScope.magv}">Quay lại</a>
             <a href="trangchu" class="btn btn-link d-flex justify-content-end">Trang Chủ</a>
         </div>
         <jsp:include page="footer.jsp"/>

@@ -15,7 +15,7 @@
     <body>
         <jsp:include page="header.jsp"/>
         <div class="content-layout">
-
+            <h1 class="d-flex justify-content-center">Danh sách lớp học</h1>
             <div class="input-group mb-3">
                 <span class="input-group-text width-150">Tên giáo viên: </span>
                 <label class="form-control"><c:out value="${thongtingv.name}"/></label>
@@ -32,7 +32,7 @@
 
             <h1 class="d-flex justify-content-center">Danh sách lớp học</h1>
             <div class="d-flex justify-content-end">
-                <a href="taolop?&magv=${requestScope.magv}" class="btn btn-primary">Tạo lớp mới</a>
+                <a href="taolop?&magv=${requestScope.magv}" class="btn btn-primary m-lg-2">Tạo lớp mới</a>
             </div>
 
             <table border="1" class="table table-striped">
@@ -81,14 +81,12 @@
                     </c:forEach>
                 </tbody>
             </table>
+        <div class="d-flex justify-content-end">
+            <a href="trangchu" class="btn btn-primary m-lg-2">Quay lại</a>
+            <a href="trangchu" class="btn btn-primary m-lg-2">Trang chủ</a>
+        </div>
         </div>
 
-        <div class="d-flex justify-content-end">
-            <a href="trangchu" class="btn btn-primary">Quay lại</a>
-        </div>
-        <div class="d-flex justify-content-end">
-            <a href="trangchu" class="btn btn-primary">Trang chủ</a>
-        </div>
         <jsp:include page="footer.jsp"/>
     </body>
 
