@@ -37,10 +37,10 @@
                 <p>${requestScope.kiemtrasinhvien.phone}</p>
 
                 <div class="input-group mb-3">
-                    <button type="submit" class="btn btn-primary margin-auto">Cập nhật</button>
+                    <button type="submit" class="btn btn-primary margin-auto">Cập Nhật</button>
                 </div>
             </form>
-            <a href="chitietlop?magv=${requestScope.magv}&mamon=${requestScope.mamon}&malop=${requestScope.malop}" class="btn btn-link d-flex justify-content-end">Quay lại</a>
+            <a href="chitietlop?magv=${requestScope.magv}&mamon=${requestScope.mamon}&malop=${requestScope.malop}" class="btn btn-link">Quay lại</a>
             <a href="trangchu" class="btn btn-link d-flex justify-content-end">Trang Chủ</a>
         </div>
         <jsp:include page="footer.jsp"/>

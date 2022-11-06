@@ -51,10 +51,17 @@ public class AccountRepo {
     }
 
     public static void initDataAccount() {
-        List<String> admin = new ArrayList<>();
-        List<String> supermod = new ArrayList<>();
-        List<String> mod = new ArrayList<>();
-        List<String> editor = new ArrayList<>();
+//        List<String> admin = new ArrayList<>();
+//        List<String> supermod = new ArrayList<>();
+//        List<String> mod = new ArrayList<>();
+//        List<String> editor = new ArrayList<>();
+        List<String> roles = new ArrayList<>();
+        List<String> roles1 = new ArrayList<>();
+        List<String> roles2 = new ArrayList<>();
+        String admin = "";
+        String supermod = "";
+        String mod = "";
+        String editor = "";
 
         List<User> listU = readDataUser().getListUser();
         List<RoleUser> listRU = readDataRoleUser().getListRoleUser();
@@ -62,42 +69,93 @@ public class AccountRepo {
 
         for (int i = 0; i < listR.size(); i++) {
             if (listR.get(i).getRoleName().equalsIgnoreCase("admin")) {
-                admin.add(listR.get(i).getRoleName().toUpperCase());
+                admin = listR.get(i).getRoleName().toUpperCase();
             }
             if (listR.get(i).getRoleName().equalsIgnoreCase("supermod")) {
-                supermod.add(listR.get(i).getRoleName().toUpperCase());
+                supermod = listR.get(i).getRoleName().toUpperCase();
             }
             if (listR.get(i).getRoleName().equalsIgnoreCase("mod")) {
-                mod.add(listR.get(i).getRoleName().toUpperCase());
+                mod = listR.get(i).getRoleName().toUpperCase();
             }
             if (listR.get(i).getRoleName().equalsIgnoreCase("editor")) {
-                editor.add(listR.get(i).getRoleName().toUpperCase());
+                editor = listR.get(i).getRoleName().toUpperCase();
             }
         }
 
         for (int i = 0; i < listU.size(); i++) {
             for (int j = 0; j < listRU.size(); j++) {
-                for (int k = 0; k < listR.size(); k++) {
-                    if ((listU.get(i).getUserID().equalsIgnoreCase(listRU.get(j).getUserID()))
-                            && listRU.get(j).getRoleID().equalsIgnoreCase(listR.get(k).getRoleID())) {
-                        if (listR.get(k).getRoleName().equalsIgnoreCase("ADMIN")) {
-                            TEACHERS.add(new Account(listU.get(i).getUserName(), listU.get(i).getPassword(), admin));
+                if (listRU.get(j).getUserID().equalsIgnoreCase("u01")) {
+                    for (int k = 0; k < listR.size(); k++) {
+                        if ((listU.get(i).getUserID().equalsIgnoreCase(listRU.get(j).getUserID()))
+                                && listRU.get(j).getRoleID().equalsIgnoreCase(listR.get(k).getRoleID())) {
+
+                            if (listR.get(k).getRoleName().equalsIgnoreCase("ADMIN")) {
+                                roles.add(admin);
+                                TEACHERS.add(new Account(listU.get(i).getUserName(), listU.get(i).getPassword(), roles));
+                            }
+                            if (listR.get(k).getRoleName().equalsIgnoreCase("SUPERMOD")) {
+                                roles.add(supermod);
+                                TEACHERS.add(new Account(listU.get(i).getUserName(), listU.get(i).getPassword(), roles));
+                            }
+                            if (listR.get(k).getRoleName().equalsIgnoreCase("MOD")) {
+                                roles.add(mod);
+                                TEACHERS.add(new Account(listU.get(i).getUserName(), listU.get(i).getPassword(), roles));
+                            }
+                            if (listR.get(k).getRoleName().equalsIgnoreCase("EDITOR")) {
+                                roles.add(editor);
+                                TEACHERS.add(new Account(listU.get(i).getUserName(), listU.get(i).getPassword(), roles));
+                            }
                         }
-                        if (listR.get(k).getRoleName().equalsIgnoreCase("SUPERMOD")) {
-                            TEACHERS.add(new Account(listU.get(i).getUserName(), listU.get(i).getPassword(), supermod));
+                    }
+                } else if (listRU.get(j).getUserID().equalsIgnoreCase("u02")) {
+                    for (int k = 0; k < listR.size(); k++) {
+                        if ((listU.get(i).getUserID().equalsIgnoreCase(listRU.get(j).getUserID()))
+                                && listRU.get(j).getRoleID().equalsIgnoreCase(listR.get(k).getRoleID())) {
+
+                            if (listR.get(k).getRoleName().equalsIgnoreCase("ADMIN")) {
+                                roles1.add(admin);
+                                TEACHERS.add(new Account(listU.get(i).getUserName(), listU.get(i).getPassword(), roles1));
+                            }
+                            if (listR.get(k).getRoleName().equalsIgnoreCase("SUPERMOD")) {
+                                roles1.add(supermod);
+                                TEACHERS.add(new Account(listU.get(i).getUserName(), listU.get(i).getPassword(), roles1));
+                            }
+                            if (listR.get(k).getRoleName().equalsIgnoreCase("MOD")) {
+                                roles1.add(mod);
+                                TEACHERS.add(new Account(listU.get(i).getUserName(), listU.get(i).getPassword(), roles1));
+                            }
+                            if (listR.get(k).getRoleName().equalsIgnoreCase("EDITOR")) {
+                                roles1.add(editor);
+                                TEACHERS.add(new Account(listU.get(i).getUserName(), listU.get(i).getPassword(), roles1));
+                            }
                         }
-                        if (listR.get(k).getRoleName().equalsIgnoreCase("MOD")) {
-                            TEACHERS.add(new Account(listU.get(i).getUserName(), listU.get(i).getPassword(), mod));
-                        }
-                        if (listR.get(k).getRoleName().equalsIgnoreCase("EDITOR")) {
-                            TEACHERS.add(new Account(listU.get(i).getUserName(), listU.get(i).getPassword(), editor));
+                    }
+                } else if (listRU.get(j).getUserID().equalsIgnoreCase("u04")) {
+                    for (int k = 0; k < listR.size(); k++) {
+                        if ((listU.get(i).getUserID().equalsIgnoreCase(listRU.get(j).getUserID()))
+                                && listRU.get(j).getRoleID().equalsIgnoreCase(listR.get(k).getRoleID())) {
+
+                            if (listR.get(k).getRoleName().equalsIgnoreCase("ADMIN")) {
+                                roles2.add(admin);
+                                TEACHERS.add(new Account(listU.get(i).getUserName(), listU.get(i).getPassword(), roles2));
+                            }
+                            if (listR.get(k).getRoleName().equalsIgnoreCase("SUPERMOD")) {
+                                roles2.add(supermod);
+                                TEACHERS.add(new Account(listU.get(i).getUserName(), listU.get(i).getPassword(), roles2));
+                            }
+                            if (listR.get(k).getRoleName().equalsIgnoreCase("MOD")) {
+                                roles2.add(mod);
+                                TEACHERS.add(new Account(listU.get(i).getUserName(), listU.get(i).getPassword(), roles2));
+                            }
+                            if (listR.get(k).getRoleName().equalsIgnoreCase("EDITOR")) {
+                                roles2.add(editor);
+                                TEACHERS.add(new Account(listU.get(i).getUserName(), listU.get(i).getPassword(), roles2));
+                            }
                         }
                     }
                 }
             }
         }
-//        return TEACHERS;
-//        System.out.println(TEACHERS);
     }
 
     public static ArrayList<Account> read() {
@@ -131,7 +189,9 @@ public class AccountRepo {
 //        readDataRole();
         initDataAccount();
         read();
+        details("mrnam1");
         details("mrnam2");
+        details("mrnam4");
 //          System.out.println(TEACHERS);
     }
 }

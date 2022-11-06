@@ -1,22 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <school schoolName="FPT">
-    <teacher teacherID="namh6">
-        <name>Mr. Nam12356</name>
-        <email>namh3@fpt.edu.vn</email>
-        <phone>342391</phone>
-        <class classID="se1234" TimeStart="12" TimeEnd="23">
-            <subject subjectID="dsfdf">
-                <subjectName>safdsafga</subjectName>
+    <teacher teacherID="KhanhPL">
+        <name>Phan Luu Khanh</name>
+        <email>PhanLuuKhanh@gmail.com</email>
+        <phone>0367852357</phone>
+        <class classID="PD0001" TimeStart="19" TimeEnd="21">
+            <subject subjectID="prx301c">
+                <subjectName>Advanced XML for Java and Javascript</subjectName>
             </subject>
-            <student studentID="">
-                <name></name>
-                <email></email>
-                <phone></phone>
+            <student studentID="Se142985">
+                <name>Nguyen Van A</name>
+                <email>NguyenVanA@gmail.com</email>
+                <phone>0381917621</phone>
+            </student>
+            <student studentID="Se140986">
+                <name>Van B</name>
+                <email>VanB@gmai.com</email>
+                <phone>0364963654</phone>
+            </student>
+            <student studentID="Se140987">
+                <name>VanC</name>
+                <email>VanC@gmail.com</email>
+                <phone>0361753651</phone>
+            </student>
+            <student studentID="Se140988">
+                <name>VanD</name>
+                <email>VanD@gmail.com</email>
+                <phone>0364963659</phone>
+            </student>
+            <student studentID="Se140990">
+                <name>VanF</name>
+                <email>VanF@gmail.com</email>
+                <phone>0381917667</phone>
             </student>
         </class>
-        <class classID="se1234" TimeStart="12" TimeEnd="3">
-            <subject subjectID="aaaaaa">
-                <subjectName>safdsafga</subjectName>
+        <class classID="PD0002" TimeStart="18" TimeEnd="20">
+            <subject subjectID="PRM391">
+                <subjectName>Mobile Programming</subjectName>
             </subject>
             <student studentID="">
                 <name></name>
@@ -25,23 +45,13 @@
             </student>
         </class>
     </teacher>
-    <teacher teacherID="hung7">
-        <name>Mr. HUNG 12356</name>
-        <email>hung3@fpt.edu.vn</email>
-        <phone>012342113</phone>
-        <class classID="se1111" TimeStart="12" TimeEnd="23">
-            <subject subjectID="aaaaaq">
-                <subjectName>safdsafga</subjectName>
-            </subject>
-            <student studentID="se1231232">
-                <name>aefvafdsa</name>
-                <email>qwedwq@gmail.com</email>
-                <phone>0231232975</phone>
-            </student>
-        </class>
-        <class classID="se1235" TimeStart="2" TimeEnd="23">
-            <subject subjectID="bbbbbb">
-                <subjectName>bbbbbbbb</subjectName>
+    <teacher teacherID="DuyHV">
+        <name>Ho Vinh Duy</name>
+        <email>hovinhduy147@gmail.com</email>
+        <phone>0389369367</phone>
+        <class classID="" TimeStart="" TimeEnd="">
+            <subject subjectID="">
+                <subjectName></subjectName>
             </subject>
             <student studentID="">
                 <name></name>
@@ -49,9 +59,14 @@
                 <phone></phone>
             </student>
         </class>
-        <class classID="se1231" TimeStart="12" TimeEnd="23">
-            <subject subjectID="ccccc">
-                <subjectName>ccccccc</subjectName>
+    </teacher>
+    <teacher teacherID="DuyHN">
+        <name>Huynh Nhat Duy</name>
+        <email>HuynhNhatDuy@gmail.com</email>
+        <phone>0256368351</phone>
+        <class classID="" TimeStart="" TimeEnd="">
+            <subject subjectID="">
+                <subjectName></subjectName>
             </subject>
             <student studentID="">
                 <name></name>

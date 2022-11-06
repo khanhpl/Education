@@ -26,7 +26,7 @@ public class IndexServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       // SchoolRepo.read();
+        SchoolRepo.read();
 
         try {
             request.setAttribute("teacher", SchoolRepo.read().getTeacher());
