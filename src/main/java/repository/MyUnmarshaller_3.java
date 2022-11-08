@@ -16,7 +16,7 @@ import models.AccountData.Hrroleuser;
 public class MyUnmarshaller_3 {
     public static Hrroleuser getDataFromXml() {
         // bỏ đường dẫn tới file xml
-        File xmlFile = new File("C:\\Users\\HP\\OneDrive\\Desktop\\Education\\hrroleuser.xml");
+        File xmlFile = new File("D:\\XML\\Education\\hrroleuser.xml");
 
         
         Hrroleuser hrroleuser = null;

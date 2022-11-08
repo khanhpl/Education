@@ -15,7 +15,7 @@ import models.AccountData.Hrroles;
  */
 public class MyUnmarshaller_1 {
     public static Hrroles getDataFromXml() {
-        File xmlFile = new File("C:\\Users\\HP\\OneDrive\\Desktop\\Education\\hrroles.xml");
+        File xmlFile = new File("D:\\XML\\Education\\hrroles.xml");
 
         
         Hrroles hrRoles = null;

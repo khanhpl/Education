@@ -14,7 +14,7 @@ import models.AccountData.Hrusers;
  */
 public class MyUnmarshaller_2 {
     public static Hrusers getDataFromXml() {
-        File xmlFile = new File("C:\\Users\\HP\\OneDrive\\Desktop\\Education\\hrusers.xml");
+        File xmlFile = new File("D:\\XML\\Education\\hrusers.xml");
 
         
         Hrusers hrusers = null;

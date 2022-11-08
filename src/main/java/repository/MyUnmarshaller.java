@@ -22,7 +22,7 @@ public class MyUnmarshaller {
     }
 
     public static School getDataFromXml() {
-        File xmlFile = new File("C:\\Users\\HP\\OneDrive\\Desktop\\Education\\project.xml");
+        File xmlFile = new File("D:\\XML\\Education\\project.xml");
 
         
         School school = null;

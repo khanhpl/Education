@@ -31,7 +31,7 @@ public class UpdateTeacher extends HttpServlet {
 
         String teacherID = request.getParameter("magv");
 
-        request.setAttribute("thongtingiaovien", SchoolRepo.detailTeacher(teacherID));
+        request.setAttribute("gvcu", SchoolRepo.detailTeacher(teacherID));
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/updateteacher.jsp?magv=" + teacherID);
         rd.forward(request, response);
     }

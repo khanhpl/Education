@@ -19,7 +19,7 @@ public class MyMarshaller {
             JAXBContext jc = JAXBContext.newInstance(School.class);
             javax.xml.bind.Marshaller m = jc.createMarshaller();
             m.setProperty(javax.xml.bind.Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            m.marshal(school, new File("C:\\Users\\HP\\OneDrive\\Desktop\\Education\\project.xml"));
+            m.marshal(school, new File("D:\\XML\\Education\\project.xml"));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
